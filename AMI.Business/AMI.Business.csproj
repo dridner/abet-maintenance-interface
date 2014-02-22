@@ -39,7 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseLogic\DBCommandBase.cs" />
+    <Compile Include="BaseLogic\ICommand.cs" />
+    <Compile Include="BaseLogic\IDBCommand.cs" />
+    <Compile Include="Logic\Class\CreateNewClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AMI.Data\AMI.Data.csproj">
+      <Project>{ac74480b-e8e5-4f60-a964-4433bf434bf0}</Project>
+      <Name>AMI.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

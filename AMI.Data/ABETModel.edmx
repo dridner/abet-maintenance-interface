@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="ABETModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="ABETModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ABETModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ABETModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="ABETModel.Class" />
+          <EntitySet Name="ClassRevisions" EntityType="ABETModel.ClassRevision" />
+          <AssociationSet Name="ClassClassRevision" Association="ABETModel.ClassClassRevision">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="ClassRevision" EntitySet="ClassRevisions" />
+          </AssociationSet>
+          <AssociationSet Name="ClassClassRevision1" Association="ABETModel.ClassClassRevision1">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="ClassRevision" EntitySet="ClassRevisions" />
+          </AssociationSet>
+          <EntitySet Name="StudentLearningObjectives" EntityType="ABETModel.StudentLearningObjectives" />
+          <EntitySet Name="StudentLearningObjectivesRevisions" EntityType="ABETModel.StudentLearningObjectivesRevisions" />
+          <AssociationSet Name="StudentLearningObjectivesStudentLearningObjectivesRevisions" Association="ABETModel.StudentLearningObjectivesStudentLearningObjectivesRevisions">
+            <End Role="StudentLearningObjectives" EntitySet="StudentLearningObjectives" />
+            <End Role="StudentLearningObjectivesRevisions" EntitySet="StudentLearningObjectivesRevisions" />
+          </AssociationSet>
+          <AssociationSet Name="StudentLearningObjectivesStudentLearningObjectivesRevisions1" Association="ABETModel.StudentLearningObjectivesStudentLearningObjectivesRevisions1">
+            <End Role="StudentLearningObjectives" EntitySet="StudentLearningObjectives" />
+            <End Role="StudentLearningObjectivesRevisions" EntitySet="StudentLearningObjectivesRevisions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Type="Int32" Name="ClassId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ClassRevisions" Relationship="ABETModel.ClassClassRevision" FromRole="Class" ToRole="ClassRevision" />
+          <NavigationProperty Name="CurrentRevision" Relationship="ABETModel.ClassClassRevision1" FromRole="Class" ToRole="ClassRevision" />
+        </EntityType>
+        <EntityType Name="ClassRevision">
+          <Key>
+            <PropertyRef Name="RevisionId" />
+          </Key>
+          <Property Type="Int32" Name="RevisionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Class" Relationship="ABETModel.ClassClassRevision" FromRole="ClassRevision" ToRole="Class" />
+          <Property Type="Int32" Name="ClassClassId" Nullable="false" />
+        </EntityType>
+        <Association Name="ClassClassRevision">
+          <End Type="ABETModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="ABETModel.ClassRevision" Role="ClassRevision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="ClassRevision">
+              <PropertyRef Name="ClassClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClassClassRevision1">
+          <End Type="ABETModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="ABETModel.ClassRevision" Role="ClassRevision" Multiplicity="1" />
+        </Association>
+        <EntityType Name="StudentLearningObjectives">
+          <Key>
+            <PropertyRef Name="SLOId" />
+          </Key>
+          <Property Type="Int32" Name="SLOId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="CurrentRevision" Relationship="ABETModel.StudentLearningObjectivesStudentLearningObjectivesRevisions" FromRole="StudentLearningObjectives" ToRole="StudentLearningObjectivesRevisions" />
+          <NavigationProperty Name="StudentLearningObjectivesRevisions" Relationship="ABETModel.StudentLearningObjectivesStudentLearningObjectivesRevisions1" FromRole="StudentLearningObjectives" ToRole="StudentLearningObjectivesRevisions" />
+        </EntityType>
+        <EntityType Name="StudentLearningObjectivesRevisions">
+          <Key>
+            <PropertyRef Name="RevisionId" />
+          </Key>
+          <Property Type="Int32" Name="RevisionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="StudentLearningObjective" Relationship="ABETModel.StudentLearningObjectivesStudentLearningObjectivesRevisions1" FromRole="StudentLearningObjectivesRevisions" ToRole="StudentLearningObjectives" />
+          <Property Type="Int32" Name="StudentLearningObjectivesSLOId" Nullable="false" />
+        </EntityType>
+        <Association Name="StudentLearningObjectivesStudentLearningObjectivesRevisions">
+          <End Type="ABETModel.StudentLearningObjectives" Role="StudentLearningObjectives" Multiplicity="1" />
+          <End Type="ABETModel.StudentLearningObjectivesRevisions" Role="StudentLearningObjectivesRevisions" Multiplicity="1" />
+        </Association>
+        <Association Name="StudentLearningObjectivesStudentLearningObjectivesRevisions1">
+          <End Type="ABETModel.StudentLearningObjectives" Role="StudentLearningObjectives" Multiplicity="1" />
+          <End Type="ABETModel.StudentLearningObjectivesRevisions" Role="StudentLearningObjectivesRevisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentLearningObjectives">
+              <PropertyRef Name="SLOId" />
+            </Principal>
+            <Dependent Role="StudentLearningObjectivesRevisions">
+              <PropertyRef Name="StudentLearningObjectivesSLOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="ABETModel" />
+        <Alias Key="Target" Value="ABETModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="ABETModelContainer" StorageEntityContainer="ABETModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
