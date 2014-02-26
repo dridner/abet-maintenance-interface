@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMI.Business", "AMI.Busines
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMI.Data", "AMI.Data\AMI.Data.csproj", "{AC74480B-E8E5-4F60-A964-4433BF434BF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMI.Model", "AMI.Model\AMI.Model.csproj", "{6DBED80A-7384-424C-9438-DDBBEAA6F7C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{AC74480B-E8E5-4F60-A964-4433BF434BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC74480B-E8E5-4F60-A964-4433BF434BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC74480B-E8E5-4F60-A964-4433BF434BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBED80A-7384-424C-9438-DDBBEAA6F7C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBED80A-7384-424C-9438-DDBBEAA6F7C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBED80A-7384-424C-9438-DDBBEAA6F7C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBED80A-7384-424C-9438-DDBBEAA6F7C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
