@@ -61,55 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABETModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ABETModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ABETModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ABETModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ABETModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ABETModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Class.cs">
-      <DependentUpon>ABETModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClassRevision.cs">
-      <DependentUpon>ABETModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataConnection\IDBConnection.cs" />
-    <Compile Include="StudentLearningObjectives.cs">
-      <DependentUpon>ABETModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentLearningObjectivesRevisions.cs">
-      <DependentUpon>ABETModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ABETModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ABETModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ABETModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ABETModel.edmx</DependentUpon>
-      <LastGenOutput>ABETModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="ABETModel.edmx.diagram">
-      <DependentUpon>ABETModel.edmx</DependentUpon>
-    </None>
-    <None Include="ABETModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ABETModel.edmx</DependentUpon>
-      <LastGenOutput>ABETModel.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

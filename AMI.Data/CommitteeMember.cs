@@ -12,11 +12,11 @@ namespace AMI.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentLearningObjectivesRevisions
+    public partial class CommitteeMember
     {
-        public int RevisionId { get; set; }
-        public int StudentLearningObjectivesSLOId { get; set; }
+        public int CommitteeMemberId { get; set; }
+        public int ClassId { get; set; }
     
-        public virtual StudentLearningObjectives StudentLearningObjective { get; set; }
+        public virtual Class Class { get; set; }
     }
 }

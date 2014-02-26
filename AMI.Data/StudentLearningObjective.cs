@@ -12,11 +12,18 @@ namespace AMI.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ClassRevision
+    public partial class StudentLearningObjective
     {
-        public int RevisionId { get; set; }
-        public int ClassClassId { get; set; }
+        public StudentLearningObjective()
+        {
+            this.StudentLearningObjectivesRevisions = new HashSet<StudentLearningObjectivesRevisions>();
+        }
     
+        public int SLOId { get; set; }
+        public int ClassId { get; set; }
+    
+        public virtual StudentLearningObjectivesRevisions CurrentRevision { get; set; }
+        public virtual ICollection<StudentLearningObjectivesRevisions> StudentLearningObjectivesRevisions { get; set; }
         public virtual Class Class { get; set; }
     }
 }
