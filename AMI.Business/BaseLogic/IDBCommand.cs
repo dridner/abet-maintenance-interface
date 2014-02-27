@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AMI.Data.DataConnection;
 
+
 namespace AMI.Business.BaseLogic
 {
     public interface IDBCommand<T> : ICommand<T>

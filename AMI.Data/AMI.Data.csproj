@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseContext\ABETContext.cs" />
+    <Compile Include="DatabaseContext\BaseContext.cs" />
+    <Compile Include="DatabaseContext\IABETContext.cs" />
+    <Compile Include="DatabaseContext\ISecurityContext.cs" />
+    <Compile Include="DatabaseContext\SecurityContext.cs" />
+    <Compile Include="DataConnection\DBConnection.cs" />
     <Compile Include="DataConnection\IDBConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +93,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AMI.Model\AMI.Model.csproj">
+      <Project>{6dbed80a-7384-424c-9438-ddbbeaa6f7c0}</Project>
+      <Name>AMI.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
