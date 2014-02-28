@@ -9,7 +9,7 @@ namespace AMI.Data.DatabaseContext
 {
     public class SecurityContext : BaseContext<SecurityContext>, ISecurityContext
     {
-        protected SecurityContext(string connectionString)
+        internal SecurityContext(string connectionString)
             :base(connectionString)
         {
 

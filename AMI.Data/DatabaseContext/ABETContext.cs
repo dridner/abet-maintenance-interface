@@ -9,7 +9,7 @@ namespace AMI.Data.DatabaseContext
 {
     public class ABETContext : BaseContext<ABETContext>, IABETContext
     {
-        protected ABETContext(string connectionString)
+        internal ABETContext(string connectionString)
             :base(connectionString)
         {
 
@@ -18,6 +18,7 @@ namespace AMI.Data.DatabaseContext
         public IDbSet<Model.Class> Classes { get; set; }
         public IDbSet<Model.Outcome> Outcomes { get; set; }
         public IDbSet<Model.StudentLearningObjective> StudentLearningObjectives { get; set; }
+        public IDbSet<Model.CommitteeMember> CommitteeMembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

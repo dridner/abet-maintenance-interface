@@ -24,7 +24,7 @@ namespace AMI.Data.DataConnection
             {
                 if (_abetContext == null)
                 {
-                    _abetContext = new ABETContext();
+                    _abetContext = new ABETContext(this._connectionString);
                 }
                 return _abetContext;
             }
@@ -40,7 +40,7 @@ namespace AMI.Data.DataConnection
             {
                 if (_securityContext == null)
                 {
-                    _securityContext = new SecurityContext();
+                    _securityContext = new SecurityContext(this._connectionString);
                 }
                 return _securityContext;
             }
