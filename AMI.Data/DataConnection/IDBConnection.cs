@@ -9,7 +9,7 @@ namespace AMI.Data.DataConnection
 {
     public interface IDBConnection
     {
-        IABETContext ABETContext { get; set; }
-        ISecurityContext SecurityContext { get; set; }
+        IABETContext ABETContext { get; }
+        ISecurityContext SecurityContext { get; }
     }
 }

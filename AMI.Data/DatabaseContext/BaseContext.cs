@@ -14,8 +14,8 @@ namespace AMI.Data.DatabaseContext
             Database.SetInitializer<TContext>(null);
         }
 
-        protected BaseContext()
-            : base("AMI_Db")
+        protected BaseContext(string connectionString)
+            : base(connectionString)
         {
 
         }
