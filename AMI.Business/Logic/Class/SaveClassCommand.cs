@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using AMI.Model;
 using AMI.Data.DatabaseContext;
+using AMI.Business.BaseLogic;
 
 namespace AMI.Business.Logic.Class
 {
-    public class SaveClassCommand
-        //: IDBCommand<ClassEntity>
+    public class SaveClassCommand : DBCommandBase<ClassEntity>
     {
         private ClassEntity _class;
 
@@ -19,19 +19,18 @@ namespace AMI.Business.Logic.Class
             //--this._context = context; //--inherit from "IDBCommand"?
         }
 
-        //--Override
-        public ClassEntity Execute(IABETContext context)
+        public override ClassEntity Execute(Data.DataConnection.IDBConnection conn)
         {
-            ClassEntity classToUpdate = context.Classes.Where(c => c.ClassId == this._class.ClassId).SingleOrDefault();
+            ClassEntity classToUpdate = conn.ABETContext.Classes.Where(c => c.ClassId == this._class.ClassId).SingleOrDefault();
             if (classToUpdate != null)
             {
-                //this._class.CopyTo(classToUpdate);
-                //context.SaveChanges();
+                //this._class.C6opyTo(classToUpdate);
+                conn.ABETContext.SaveChanges();
             }
             else
             {
                 classToUpdate = this._class;
-                context.Classes.Add(this._class);
+                conn.ABETContext.Classes.Add(this._class);
             }
 
             return classToUpdate;
