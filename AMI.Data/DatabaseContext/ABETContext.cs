@@ -15,7 +15,7 @@ namespace AMI.Data.DatabaseContext
 
         }
 
-        public IDbSet<Model.Class> Classes { get; set; }
+        public IDbSet<Model.ClassEntity> Classes { get; set; }
         public IDbSet<Model.Outcome> Outcomes { get; set; }
         public IDbSet<Model.StudentLearningObjective> StudentLearningObjectives { get; set; }
         public IDbSet<Model.CommitteeMember> CommitteeMembers { get; set; }

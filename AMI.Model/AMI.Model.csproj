@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class.cs" />
+    <Compile Include="ClassEntity.cs" />
     <Compile Include="ClassRevision.cs" />
     <Compile Include="CommitteeMember.cs" />
     <Compile Include="CommitteeMemberRevision.cs" />
