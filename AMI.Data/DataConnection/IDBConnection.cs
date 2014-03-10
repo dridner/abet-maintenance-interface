@@ -11,5 +11,7 @@ namespace AMI.Data.DataConnection
     {
         IABETContext ABETContext { get; }
         ISecurityContext SecurityContext { get; }
+
+        void SaveAllChanges();
     }
 }

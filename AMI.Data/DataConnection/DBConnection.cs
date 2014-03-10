@@ -49,5 +49,13 @@ namespace AMI.Data.DataConnection
                 _securityContext = value;
             }
         }
+
+        public void SaveAllChanges()
+        {
+            if (this._abetContext != null)
+            {
+                this._abetContext.SaveChanges();
+            }
+        }
     }
 }

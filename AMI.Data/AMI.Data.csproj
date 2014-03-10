@@ -50,6 +50,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -67,6 +68,7 @@
     <Compile Include="DatabaseContext\ISecurityContext.cs" />
     <Compile Include="DatabaseContext\SecurityContext.cs" />
     <Compile Include="DataConnection\DBConnection.cs" />
+    <Compile Include="DataConnection\DBConnectionFactory.cs" />
     <Compile Include="DataConnection\IDBConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

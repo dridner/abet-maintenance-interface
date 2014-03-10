@@ -11,5 +11,7 @@ namespace AMI.Data.DatabaseContext
     {
         IDbSet<User> Users { get; set; }
         IDbSet<Role> Roles { get; set; }
+
+        int SaveChanges();
     }
 }
