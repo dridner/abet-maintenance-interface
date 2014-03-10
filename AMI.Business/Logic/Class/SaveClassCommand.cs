@@ -13,10 +13,9 @@ namespace AMI.Business.Logic.Class
     {
         private ClassEntity _class;
 
-        public SaveClassCommand(ClassEntity classToSave, ISecurityContext context)
+        public SaveClassCommand(ClassEntity classToSave)
         {
             this._class = classToSave;
-            //--this._context = context; //--inherit from "IDBCommand"?
         }
 
         public override ClassEntity Execute(Data.DataConnection.IDBConnection conn)
@@ -24,7 +23,7 @@ namespace AMI.Business.Logic.Class
             ClassEntity classToUpdate = conn.ABETContext.Classes.Where(c => c.ClassId == this._class.ClassId).SingleOrDefault();
             if (classToUpdate != null)
             {
-                //this._class.C6opyTo(classToUpdate);
+                //this._class.CopyTo(classToUpdate);
                 conn.ABETContext.SaveChanges();
             }
             else
