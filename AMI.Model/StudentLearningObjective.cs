@@ -9,6 +9,6 @@ namespace AMI.Model
     public class StudentLearningObjective
     {
         public int SLOId { get; set; }
-        public Class Class { get; set; }
+        public ClassEntity Class { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AMI.Model
 {
-    public class Class
+    public class ClassEntity
     {
         public int ClassId { get; set; }
         public ClassRevision CurrentRevision { get; set; }
