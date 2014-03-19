@@ -51,6 +51,7 @@
     <Compile Include="BaseLogic\IDBCommand.cs" />
     <Compile Include="ClassLogic\SaveClassCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserLogic\SignInUserCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AMI.Data\AMI.Data.csproj">

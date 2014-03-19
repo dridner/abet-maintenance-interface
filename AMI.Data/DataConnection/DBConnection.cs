@@ -14,6 +14,7 @@ namespace AMI.Data.DataConnection
         private IABETContext _abetContext;
         private IdentityDbContext<User> _securityContext;
         private readonly string _connectionString;
+        private bool _disposed;
 
         public DBConnection(string connectionString)
         {
@@ -58,6 +59,35 @@ namespace AMI.Data.DataConnection
             {
                 this._abetContext.SaveChanges();
             }
+            if (this._securityContext != null)
+            {
+                this._securityContext.SaveChanges();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this._disposed)
+            {
+                if (disposing)
+                {
+                    if (_securityContext != null)
+                    {
+                        _securityContext.Dispose();
+                    }
+                    if (_abetContext != null)
+                    {
+                        _abetContext.Dispose();
+                    }
+                }
+            }
+            this._disposed = true;
         }
     }
 }

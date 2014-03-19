@@ -14,8 +14,10 @@ namespace AMI.Business.BaseLogic
             T obj = default(T);
             try
             {
-                IDBConnection connection = DBConnectionFactory.CreateConnection();
-                obj = this.Execute(connection);
+                using (IDBConnection connection = DBConnectionFactory.CreateConnection())
+                {
+                    obj = this.Execute(connection);
+                }
             }
             catch (Exception)
             {

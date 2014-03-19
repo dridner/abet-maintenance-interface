@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AMI.Data.DataConnection
 {
-    public interface IDBConnection
+    public interface IDBConnection : IDisposable
     {
         IABETContext ABETContext { get; }
         IdentityDbContext<User> SecurityContext { get; }

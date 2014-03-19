@@ -8,7 +8,7 @@ using AMI.Model;
 
 namespace AMI.Data.DatabaseContext
 {
-    public interface IABETContext
+    public interface IABETContext : IDisposable
     {
         IDbSet<Class> Classes { get; set; }
         IDbSet<Outcome> Outcomes { get; set; }
