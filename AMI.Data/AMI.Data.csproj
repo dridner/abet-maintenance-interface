@@ -52,6 +52,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -68,8 +74,6 @@
     <Compile Include="DatabaseContext\ABETContext.cs" />
     <Compile Include="DatabaseContext\BaseContext.cs" />
     <Compile Include="DatabaseContext\IABETContext.cs" />
-    <Compile Include="DatabaseContext\ISecurityContext.cs" />
-    <Compile Include="DatabaseContext\SecurityContext.cs" />
     <Compile Include="DataConnection\DBConnection.cs" />
     <Compile Include="DataConnection\DBConnectionFactory.cs" />
     <Compile Include="DataConnection\IDBConnection.cs" />

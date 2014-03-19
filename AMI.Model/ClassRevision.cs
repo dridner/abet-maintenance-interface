@@ -8,7 +8,7 @@ namespace AMI.Model
 {
     public class ClassRevision : IAuditable
     {
-        public int RevisionId { get; set; }
+        public int ClassId { get; set; }
         public string Name { get; set; }
         public string Prefix { get; set; }
         public string Number { get; set; }
@@ -16,5 +16,6 @@ namespace AMI.Model
         public bool IsActive { get; set; }
         public int CreatedByUserId { get; set; }
         public DateTime CreatedOn { get; set; }
+        public DateTime LastActiveDate { get; set; }
     }
 }

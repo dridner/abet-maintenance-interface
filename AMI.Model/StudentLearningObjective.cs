@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace AMI.Model
 {
-    public class StudentLearningObjective
+    public class StudentLearningObjective : IAuditable
     {
         public int SLOId { get; set; }
-        public ClassEntity Class { get; set; }
+        public Class Class { get; set; }
+        public string Text { get; set; }
+
+        public bool IsActive { get; set; }
+        public int CreatedByUserId { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

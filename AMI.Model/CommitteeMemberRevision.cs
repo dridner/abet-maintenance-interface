@@ -8,11 +8,13 @@ namespace AMI.Model
 {
     public class CommitteeMemberRevision : IAuditable
     {
-        public int RevisionId { get; set; }
+        public int CommitteeMemberId { get; set; }
+        public Class Class { get; set; }
         public string Name { get; set; }
 
         public bool IsActive { get; set; }
         public int CreatedByUserId { get; set; }
         public DateTime CreatedOn { get; set; }
+        public DateTime LastActiveDate { get; set; }
     }
 }

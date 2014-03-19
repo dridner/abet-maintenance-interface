@@ -7,20 +7,20 @@ using AMI.Model;
 using AMI.Data.DatabaseContext;
 using AMI.Business.BaseLogic;
 
-namespace AMI.Business.Logic.Class
+namespace AMI.Business.ClassLogic
 {
-    public class SaveClassCommand : DBCommandBase<ClassEntity>
+    public class SaveClassCommand : DBCommandBase<Class>
     {
-        private ClassEntity _class;
+        private Class _class;
 
-        public SaveClassCommand(ClassEntity classToSave)
+        public SaveClassCommand(Class classToSave)
         {
             this._class = classToSave;
         }
 
-        public override ClassEntity Execute(Data.DataConnection.IDBConnection conn)
+        public override Class Execute(Data.DataConnection.IDBConnection conn)
         {
-            ClassEntity classToUpdate = conn.ABETContext.Classes.Where(c => c.ClassId == this._class.ClassId).SingleOrDefault();
+            Class classToUpdate = conn.ABETContext.Classes.Where(c => c.Id == this._class.Id).SingleOrDefault();
             if (classToUpdate != null)
             {
                 //this._class.CopyTo(classToUpdate);

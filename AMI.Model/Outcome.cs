@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace AMI.Model
 {
-    public class Outcome
+    public class Outcome : IAuditable
     {
-        public int OutcomeId { get; set; }
+        public int Id { get; set; }
+        public string Text { get; set; }
+
+        public bool IsActive { get; set; }
+        public int CreatedByUserId { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

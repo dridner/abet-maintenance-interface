@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AMI.Model;
 
 namespace AMI.Data.DatabaseContext
 {
@@ -15,10 +16,10 @@ namespace AMI.Data.DatabaseContext
 
         }
 
-        public IDbSet<Model.ClassEntity> Classes { get; set; }
-        public IDbSet<Model.Outcome> Outcomes { get; set; }
-        public IDbSet<Model.StudentLearningObjective> StudentLearningObjectives { get; set; }
-        public IDbSet<Model.CommitteeMember> CommitteeMembers { get; set; }
+        public IDbSet<Class> Classes { get; set; }
+        public IDbSet<Outcome> Outcomes { get; set; }
+        public IDbSet<StudentLearningObjective> StudentLearningObjectives { get; set; }
+        public IDbSet<CommitteeMember> CommitteeMembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

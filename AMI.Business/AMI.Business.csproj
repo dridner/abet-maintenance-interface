@@ -49,7 +49,7 @@
     <Compile Include="BaseLogic\DBCommandBase.cs" />
     <Compile Include="BaseLogic\ICommand.cs" />
     <Compile Include="BaseLogic\IDBCommand.cs" />
-    <Compile Include="Logic\Class\SaveClassCommand.cs" />
+    <Compile Include="ClassLogic\SaveClassCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

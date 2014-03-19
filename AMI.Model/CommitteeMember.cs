@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace AMI.Model
 {
-    public class CommitteeMember
+    public class CommitteeMember : IAuditable
     {
-        public int CommitteeMemberId { get; set; }
-        public CommitteeMemberRevision CurrentRevision { get; set; }
-        public ICollection<CommitteeMemberRevision> Revisions { get; set; }
+        public int Id { get; set; }
+        public Class Class { get; set; }
+        public string Name { get; set; }
+
+        public bool IsActive { get; set; }
+        public int CreatedByUserId { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

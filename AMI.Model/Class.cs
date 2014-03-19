@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace AMI.Model
 {
-    public class StudentLearningObjectiveRevision : IAuditable
+    public class Class : IAuditable
     {
-        public int SLOId { get; set; }
-        public Class Class { get; set; }
-        public string Text { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Prefix { get; set; }
+        public string Number { get; set; }
 
         public bool IsActive { get; set; }
         public int CreatedByUserId { get; set; }
         public DateTime CreatedOn { get; set; }
-        public DateTime LastActiveDate { get; set; }
     }
 }
