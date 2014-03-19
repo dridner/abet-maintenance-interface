@@ -9,5 +9,6 @@ namespace AMI.Model
     public class Program
     {
         public int ProgramId { get; set; }
+        public string Name { get; set; }
     }
 }

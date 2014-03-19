@@ -8,7 +8,7 @@ namespace AMI.Model
 {
     public interface IAuditable
     {
-        int CreatedByUserId { get; set; }
+        User CreatedBy { get; set; }
         DateTime CreatedOn { get; set; }
     }
 }
