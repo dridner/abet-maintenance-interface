@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using System.Net;
+using System.Security.Claims;
 
 namespace AMI.Business.UserLogic
 {
@@ -22,6 +25,14 @@ namespace AMI.Business.UserLogic
 
         public override bool Execute(IDBConnection conn)
         {
+            User user = conn.UserManager.Find(this.username, this.password);
+            if (user != null)
+            {
+                var identity = conn.UserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+                identity.AddClaim(new Claim(ClaimTypes.UserData, user.UserName));
+                //TODO Finish
+            }
+            
             return true;
         }
     }

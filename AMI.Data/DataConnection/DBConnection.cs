@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using AMI.Data.DatabaseContext;
 using AMI.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace AMI.Data.DataConnection
 {
     public class DBConnection : IDBConnection
     {
         private IABETContext _abetContext;
-        private IdentityDbContext<User> _securityContext;
+        private UserManager<User> _userManager;
         private readonly string _connectionString;
         private bool _disposed;
 
@@ -37,19 +38,19 @@ namespace AMI.Data.DataConnection
             }
         }
 
-        public IdentityDbContext<User> SecurityContext 
+        public UserManager<User> UserManager
         {
             get
             {
-                if (_securityContext == null)
+                if (_userManager == null)
                 {
-                    _securityContext = new IdentityDbContext<User>(this._connectionString);
+                    _userManager = new UserManager<User>(new UserStore<User>(new IdentityDbContext<User>(this._connectionString)));
                 }
-                return _securityContext;
+                return _userManager;
             }
             internal set
             {
-                _securityContext = value;
+                _userManager = value;
             }
         }
 
@@ -58,10 +59,6 @@ namespace AMI.Data.DataConnection
             if (this._abetContext != null)
             {
                 this._abetContext.SaveChanges();
-            }
-            if (this._securityContext != null)
-            {
-                this._securityContext.SaveChanges();
             }
         }
 
@@ -77,9 +74,9 @@ namespace AMI.Data.DataConnection
             {
                 if (disposing)
                 {
-                    if (_securityContext != null)
+                    if (_userManager != null)
                     {
-                        _securityContext.Dispose();
+                        _userManager.Dispose();
                     }
                     if (_abetContext != null)
                     {

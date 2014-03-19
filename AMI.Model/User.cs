@@ -9,11 +9,6 @@ namespace AMI.Model
 {
     public class User : IdentityUser, IAuditable
     {
-        public int UserId { get; set; }
-        public string Username { get; set; }
-        public string Salt { get; set; }
-        public string Password { get; set; }
-        
         public bool IsActive { get; set; }
         public User CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
