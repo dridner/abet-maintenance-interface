@@ -10,6 +10,6 @@ namespace AMI.Business.BaseLogic
 {
     public interface IDBCommand<T> : ICommand<T>
     {
-        T Execute(IDBConnection connection);
+        Task<T> Execute(IDBConnection connection);
     }
 }

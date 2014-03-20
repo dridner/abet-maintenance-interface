@@ -23,13 +23,13 @@ namespace AMI.Business.UserLogic
             this.password = password;
         }
 
-        public override bool Execute(IDBConnection conn)
+        public override async Task<bool> Execute(IDBConnection conn)
         {
             User user = conn.UserManager.Find(this.username, this.password);
             if (user != null)
             {
-                var identity = conn.UserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
-                identity.AddClaim(new Claim(ClaimTypes.UserData, user.UserName));
+                var identity = await conn.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                identity.AddClaim(new Claim(ClaimTypes.Email, user.UserName));
                 //TODO Finish
             }
             

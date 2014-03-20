@@ -9,9 +9,9 @@ namespace AMI.Business.BaseLogic
 {
     public abstract class DBCommandBase<T> : IDBCommand<T>, ICommand<T>
     {
-        public T Execute()
+        public Task<T> Execute()
         {
-            T obj = default(T);
+            Task<T> obj = default(Task<T>);
             try
             {
                 using (IDBConnection connection = DBConnectionFactory.CreateConnection())
@@ -27,6 +27,6 @@ namespace AMI.Business.BaseLogic
             return obj;
         }
 
-        public abstract T Execute(IDBConnection conn);
+        public abstract Task<T> Execute(IDBConnection conn);
     }
 }

@@ -12,7 +12,7 @@ namespace AMI.Data.DataConnection
 {
     public class DBConnection : IDBConnection
     {
-        private IABETContext _abetContext;
+        private ABETContext _abetContext;
         private UserManager<User> _userManager;
         private readonly string _connectionString;
         private bool _disposed;
@@ -22,7 +22,7 @@ namespace AMI.Data.DataConnection
             _connectionString = connectionString;
         }
 
-        public IABETContext ABETContext
+        public ABETContext ABETContext
         {
             get
             {

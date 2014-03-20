@@ -18,9 +18,9 @@ namespace AMI.Business.ClassLogic
             this._class = classToSave;
         }
 
-        public override Class Execute(Data.DataConnection.IDBConnection conn)
+        public override async Task<Class> Execute(Data.DataConnection.IDBConnection conn)
         {
-            Class classToUpdate = conn.ABETContext.Classes.Where(c => c.Id == this._class.Id).SingleOrDefault();
+            Class classToUpdate = await conn.ABETContext.Classes.FindAsync(this._class.Id);
             if (classToUpdate != null)
             {
                 //this._class.CopyTo(classToUpdate);

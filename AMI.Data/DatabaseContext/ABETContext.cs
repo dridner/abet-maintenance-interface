@@ -8,7 +8,7 @@ using AMI.Model;
 
 namespace AMI.Data.DatabaseContext
 {
-    public class ABETContext : BaseContext<ABETContext>, IABETContext
+    public class ABETContext : BaseContext<ABETContext>
     {
         internal ABETContext(string connectionString)
             :base(connectionString)
@@ -16,10 +16,10 @@ namespace AMI.Data.DatabaseContext
 
         }
 
-        public IDbSet<Class> Classes { get; set; }
-        public IDbSet<Outcome> Outcomes { get; set; }
-        public IDbSet<StudentLearningObjective> StudentLearningObjectives { get; set; }
-        public IDbSet<CommitteeMember> CommitteeMembers { get; set; }
+        public DbSet<Class> Classes { get; set; }
+        public DbSet<Outcome> Outcomes { get; set; }
+        public DbSet<StudentLearningObjective> StudentLearningObjectives { get; set; }
+        public DbSet<CommitteeMember> CommitteeMembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

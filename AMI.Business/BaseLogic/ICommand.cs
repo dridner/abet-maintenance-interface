@@ -8,6 +8,6 @@ namespace AMI.Business.BaseLogic
 {
     public interface ICommand<T>
     {
-        T Execute();
+        Task<T> Execute();
     }
 }
