@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using System.Net;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 using System.Security.Claims;
 
 namespace AMI.Business.UserLogic
 {
-    public class SignInUserCommand : DBCommandBase<bool>
+    public class SignInUserCommand : DBCommandBase<ClaimsIdentity>
     {
         private string username;
         private string password;
@@ -23,17 +24,17 @@ namespace AMI.Business.UserLogic
             this.password = password;
         }
 
-        public override async Task<bool> Execute(IDBConnection conn)
+        public override async Task<ClaimsIdentity> Execute(IDBConnection conn)
         {
+            ClaimsIdentity identity = null;
             User user = conn.UserManager.Find(this.username, this.password);
             if (user != null)
             {
-                var identity = await conn.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                identity = await conn.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                 identity.AddClaim(new Claim(ClaimTypes.Email, user.UserName));
-                //TODO Finish
             }
-            
-            return true;
+
+            return identity;
         }
     }
 }
