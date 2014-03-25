@@ -83,6 +83,7 @@
     <Compile Include="UserLogic\ChangeUserPasswordCommand.cs" />
     <Compile Include="UserLogic\RegisterUserCommand.cs" />
     <Compile Include="UserLogic\SignInUserCommand.cs" />
+    <Compile Include="UserLogic\UserCommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AMI.Data\AMI.Data.csproj">
