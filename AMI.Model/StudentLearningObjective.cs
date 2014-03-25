@@ -13,7 +13,7 @@ namespace AMI.Model
         public string Text { get; set; }
 
         public bool IsActive { get; set; }
-        public User CreatedBy { get; set; }
+        public ApplicationUser CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
     }
 }

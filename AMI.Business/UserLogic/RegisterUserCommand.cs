@@ -12,10 +12,10 @@ namespace AMI.Business.UserLogic
 {
     public class RegisterUserCommand : DBCommandBase<IdentityResult>
     {
-        private User _user;
+        private ApplicationUser _user;
         private string _password;
 
-        public RegisterUserCommand(User user, string password)
+        public RegisterUserCommand(ApplicationUser user, string password)
         {
             this._user = user;
             this._password = password;

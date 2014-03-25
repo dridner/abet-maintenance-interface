@@ -12,11 +12,11 @@ namespace AMI.Business.UserLogic
 {
     public class ChangeUserPasswordCommand : DBCommandBase<IdentityResult>
     {
-        private User _user;
+        private ApplicationUser _user;
         private string _oldPassword;
         private string _newPassword;
 
-        public ChangeUserPasswordCommand(User user, string oldPassword, string newPassword)
+        public ChangeUserPasswordCommand(ApplicationUser user, string oldPassword, string newPassword)
         {
             this._user = user;
             this._oldPassword = oldPassword;

@@ -13,7 +13,7 @@ namespace AMI.Data.DataConnection
     public interface IDBConnection : IDisposable
     {
         ABETContext ABETContext { get; }
-        UserManager<User> UserManager { get; }
+        UserManager<ApplicationUser> UserManager { get; }
 
         void SaveAllChanges();
     }

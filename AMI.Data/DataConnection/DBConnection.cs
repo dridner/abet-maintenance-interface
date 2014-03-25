@@ -13,7 +13,7 @@ namespace AMI.Data.DataConnection
     public class DBConnection : IDBConnection
     {
         private ABETContext _abetContext;
-        private UserManager<User> _userManager;
+        private UserManager<ApplicationUser> _userManager;
         private readonly string _connectionString;
         private bool _disposed;
 
@@ -38,13 +38,13 @@ namespace AMI.Data.DataConnection
             }
         }
 
-        public UserManager<User> UserManager
+        public UserManager<ApplicationUser> UserManager
         {
             get
             {
                 if (_userManager == null)
                 {
-                    _userManager = new UserManager<User>(new UserStore<User>(new IdentityDbContext<User>(this._connectionString)));
+                    _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new IdentityDbContext<ApplicationUser>(this._connectionString)));
                 }
                 return _userManager;
             }

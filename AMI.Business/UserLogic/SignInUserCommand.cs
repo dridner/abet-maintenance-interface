@@ -27,7 +27,7 @@ namespace AMI.Business.UserLogic
         public override async Task<ClaimsIdentity> Execute(IDBConnection conn)
         {
             ClaimsIdentity identity = null;
-            User user = await conn.UserManager.FindAsync(this.username, this.password);
+            ApplicationUser user = await conn.UserManager.FindAsync(this.username, this.password);
             if (user != null)
             {
                 identity = await conn.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);

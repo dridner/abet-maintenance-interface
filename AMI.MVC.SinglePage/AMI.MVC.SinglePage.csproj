@@ -351,6 +351,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AMI.Business\AMI.Business.csproj">
+      <Project>{25cf0918-e66a-4ab5-8273-c72dc9de9dde}</Project>
+      <Name>AMI.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AMI.Model\AMI.Model.csproj">
+      <Project>{6dbed80a-7384-424c-9438-ddbbeaa6f7c0}</Project>
+      <Name>AMI.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

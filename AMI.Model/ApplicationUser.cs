@@ -7,10 +7,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AMI.Model
 {
-    public class User : IdentityUser, IAuditable
+    public class ApplicationUser : IdentityUser, IAuditable
     {
         public bool IsActive { get; set; }
-        public User CreatedBy { get; set; }
+        public ApplicationUser CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
     }
 }
