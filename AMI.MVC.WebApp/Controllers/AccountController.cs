@@ -33,8 +33,12 @@ namespace AMI.MVC.WebApp.Controllers
             if (ModelState.IsValid)
             {
                 var claimsIdentity = await UserCommands.SignIn(model.Username, model.Password);
-                AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = model.RememberMe }, claimsIdentity);
-                return RedirectToAction("Index", "Home");
+                if (claimsIdentity != null)
+                {
+                    AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = model.RememberMe }, claimsIdentity);
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "Invalid username or password!");
             }
 
             return View();

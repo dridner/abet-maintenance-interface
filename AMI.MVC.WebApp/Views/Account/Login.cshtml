@@ -1,0 +1,27 @@
+﻿@model AMI.MVC.WebApp.Models.Account.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Login</legend>
+        <div>
+            <div>
+                @Html.ValidationSummary()
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Username): @Html.TextBoxFor(m => m.Username) @Html.ValidationMessageFor(m => m.Username)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Password): @Html.PasswordFor(m => m.Password) @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div>
+                <input type="submit" value="Login" />
+            </div>
+        </div>
+    </fieldset>
+}
