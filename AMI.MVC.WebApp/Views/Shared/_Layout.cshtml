@@ -1,13 +1,23 @@
 ﻿<!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+        @Styles.Render("~/Styles/css")
+    </head>
+    <body>
+        <div id="pageHeader">
+            <div id="logoArea">
+                This is the Logo AREA!
+            </div>
+            <div id="loginControl">
+                This will be the login control.
+            </div>
+        </div>
+        <div class="clearFix"></div>
+        <div>
+            @RenderBody()
+        </div>
+    </body>
 </html>

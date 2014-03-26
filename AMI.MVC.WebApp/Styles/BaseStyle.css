@@ -1,0 +1,21 @@
+﻿body 
+{
+    margin:auto;
+    width:960px;
+}
+#pageHeader
+{
+    padding-top:20px;
+}
+#loginControl
+{
+    float:right;
+}
+#logoArea
+{
+    float:left;
+}
+.clearFix
+{
+    clear:both;
+}

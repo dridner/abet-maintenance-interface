@@ -4,24 +4,39 @@
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div style="display:inline-block; width:45%">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Login</legend>
+            <div>
+                <div>
+                    @Html.ValidationSummary()
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Username): @Html.TextBoxFor(m => m.Username) @Html.ValidationMessageFor(m => m.Username)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Password): @Html.PasswordFor(m => m.Password) @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                <div>
+                    <input type="submit" value="Login" />
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>
+<div style="display:inline-block;width:45%">
     <fieldset>
-        <legend>Login</legend>
+        <legend>Register</legend>
         <div>
             <div>
-                @Html.ValidationSummary()
+                Don't have an account yet?
             </div>
             <div>
-                @Html.LabelFor(m => m.Username): @Html.TextBoxFor(m => m.Username) @Html.ValidationMessageFor(m => m.Username)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.Password): @Html.PasswordFor(m => m.Password) @Html.ValidationMessageFor(m => m.Password)
-            </div>
-            <div>
-                <input type="submit" value="Login" />
+                Click @Html.ActionLink("here", "Register") to register!
             </div>
         </div>
     </fieldset>
-}
+</div>
