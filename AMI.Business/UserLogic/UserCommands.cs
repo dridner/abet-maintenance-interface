@@ -20,5 +20,10 @@ namespace AMI.Business.UserLogic
         {
             return new ChangeUserPasswordCommand(user, oldPassword, newPassword).Execute();
         }
+
+        public static Task<IdentityResult> RegisterUser(ApplicationUser user, string password)
+        {
+            return new RegisterUserCommand(user, password).Execute();
+        }
     }
 }
