@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AMI.Model
 {
-    public class OutcomeRevision : IAuditable
+    public class OutcomeHistory : IAuditable
     {
-        public int OutcomeId { get; set; }
+        public Outcome Outcome { get; set; }
         public string Text { get; set; }
 
         public bool IsActive { get; set; }

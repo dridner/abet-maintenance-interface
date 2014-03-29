@@ -45,6 +45,34 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(object registerModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var identityResult = await UserCommands.RegisterUser(null, null);
+                if (identityResult.Succeeded)
+                {
+                    var claimsIdentity = await UserCommands.SignIn(null, null);
+                    if (claimsIdentity != null)
+                    {
+                        AuthenticationManager.SignIn(properties: null, identities:claimsIdentity);
+                    }
+                }
+            }
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Logout()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
