@@ -1,38 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AMI.Model;
-using AMI.Data.DatabaseContext;
+﻿using System.Threading.Tasks;
 using AMI.Business.BaseLogic;
+using AMI.Data.DataConnection;
+using AMI.Model;
+using AutoMapper;
 
 namespace AMI.Business.ClassLogic
 {
     public class SaveClassCommand : DBCommandBase<Class>
     {
-        private Class _class;
+        private Class _model;
+        private CreateClassHistoryCommand.Factory _createHistoryCommand;
 
-        public SaveClassCommand(Class classToSave)
+        public delegate SaveClassCommand Factory(Class modelToSave);
+
+        public SaveClassCommand(Class classToSave, CreateClassHistoryCommand.Factory createHistory)
         {
-            this._class = classToSave;
+            this._model = classToSave;
+            this._createHistoryCommand = createHistory;
         }
 
-        public override async Task<Class> Execute(Data.DataConnection.IDBConnection conn)
+        public override async Task<Class> Execute(IDBConnection conn)
         {
-            Class classToUpdate = await conn.ABETContext.Classes.FindAsync(this._class.Id);
-            if (classToUpdate != null)
+            Class modelToUpdate = await conn.ABETContext.Classes.FindAsync(this._model.Id);
+            if (modelToUpdate != null)
             {
-                //this._class.CopyTo(classToUpdate);
+                ClassHistory history = Mapper.Map<ClassHistory>(modelToUpdate);
+                await this._createHistoryCommand(history).Execute(conn);
+                Mapper.Map(this._model, modelToUpdate);
                 conn.ABETContext.SaveChanges();
             }
             else
             {
-                classToUpdate = this._class;
-                conn.ABETContext.Classes.Add(this._class);
+                conn.ABETContext.Classes.Add(this._model);
+                modelToUpdate = this._model;
             }
 
-            return classToUpdate;
+            return modelToUpdate;
         }
     }
 }
