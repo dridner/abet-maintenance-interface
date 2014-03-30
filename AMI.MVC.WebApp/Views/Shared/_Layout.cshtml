@@ -7,16 +7,25 @@
         @Styles.Render("~/Styles/css")
     </head>
     <body>
-        <div id="pageHeader">
-            <div id="logoArea">
-                This is the Logo AREA!
+        <div id="layoutHeader">
+            <div class="twoColumn">
+                <div class="largerText">
+                    THE UNIVERSITY OF TOLEDO
+                </div>
+                <div style="font-size:1.5em;">
+                    ABET Maintenance Interface
+                </div>
             </div>
-            <div id="loginControl">
-                This will be the login control.
+            <div class="twoColumn rightAligned" style="vertical-align:top;">
+                @Html.Partial("_LoginControl")
             </div>
         </div>
-        <div class="clearFix"></div>
-        <div>
+        <nav>
+            <ul>
+                <li>Class</li>
+            </ul>
+        </nav>
+        <div id="mainContent">
             @RenderBody()
         </div>
     </body>

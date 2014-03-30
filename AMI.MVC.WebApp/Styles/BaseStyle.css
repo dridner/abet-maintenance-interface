@@ -3,19 +3,35 @@
     margin:auto;
     width:960px;
 }
-#pageHeader
+nav > ul
+{
+    list-style:none;
+    margin:10px 0;
+    padding:0;
+}
+nav li
+{
+    display:inline-block;
+}
+#layoutHeader
 {
     padding-top:20px;
+    font-family:Cambria,serif;
 }
-#loginControl
+.twoColumn
 {
-    float:right;
+    display:inline-block;
+    width:49%;
 }
-#logoArea
+.largerText
 {
-    float:left;
+    font-size:2em;
 }
-.clearFix
+.rightAligned
 {
-    clear:both;
+    text-align:right;
+}
+#mainContent
+{
+    margin-top:20px;
 }

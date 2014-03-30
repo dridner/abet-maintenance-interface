@@ -1,0 +1,11 @@
+﻿
+@if (User.Identity.IsAuthenticated)
+{
+    <span>@User.Identity.Name</span>
+    @Html.ActionLink("Log out", "Logout", "Account")
+}
+else
+{
+    <span>Not logged in.</span>
+    @Html.ActionLink("Log in", "Login", "Account")
+}

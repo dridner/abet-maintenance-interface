@@ -4,7 +4,7 @@
     ViewBag.Title = "Login";
 }
 
-<div style="display:inline-block; width:45%">
+<div style="width:45%;margin:auto;">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -23,20 +23,13 @@
                 <div>
                     <input type="submit" value="Login" />
                 </div>
+                <div>
+                    Don't have an account yet?
+                </div>
+                <div>
+                    @Html.ActionLink("Click here to register!", "Register")
+                </div>
             </div>
         </fieldset>
     }
-</div>
-<div style="display:inline-block;width:45%">
-    <fieldset>
-        <legend>Register</legend>
-        <div>
-            <div>
-                Don't have an account yet?
-            </div>
-            <div>
-                Click @Html.ActionLink("here", "Register") to register!
-            </div>
-        </div>
-    </fieldset>
 </div>
