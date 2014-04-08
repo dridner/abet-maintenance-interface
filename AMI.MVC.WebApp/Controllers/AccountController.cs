@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AMI.Business.UserLogic;
+using AMI.Model;
 using AMI.MVC.WebApp.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -48,27 +49,44 @@ namespace AMI.MVC.WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(object registerModel)
+        public async Task<ActionResult> Register(RegisterModel registerModel)
         {
             if (ModelState.IsValid)
             {
-                var identityResult = await UserCommands.RegisterUser(null, null);
+                //Create an application user.
+                ApplicationUser user = new ApplicationUser
+                {
+                    CreatedOn = DateTime.Now,
+                    Email = registerModel.EmailAddress,
+                    IsActive = true,
+                    UserName = registerModel.EmailAddress
+                };
+
+                var identityResult = await UserCommands.RegisterUser(user, registerModel.Password);
                 if (identityResult.Succeeded)
                 {
-                    var claimsIdentity = await UserCommands.SignIn(null, null);
+                    //Log them in.
+                    var claimsIdentity = await UserCommands.SignIn(registerModel.EmailAddress, registerModel.Password);
                     if (claimsIdentity != null)
                     {
-                        AuthenticationManager.SignIn(properties: null, identities:claimsIdentity);
+                        AuthenticationManager.SignIn(claimsIdentity);
+                        return RedirectToAction("Index", "Home");
                     }
+
+                    ModelState.AddModelError("", "MAJOR ERROR: UNABLE TO SIGN IN NEW REGISTER USER. WTF.");
+                }
+                else
+                {
+                    ModelState.AddModelError("", string.Join(", ", identityResult.Errors));
                 }
             }
+            //Here, means we're invalid, show the view again.
             return View();
         }
 
