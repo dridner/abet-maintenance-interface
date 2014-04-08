@@ -4,4 +4,32 @@
     ViewBag.Title = "Register";
 }
 
-REGISTER!
+<div style="width:45%;margin:auto;">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Registration Info</legend>
+            <div style="width:80%;text-align:right;margin:auto;">
+                <div>
+                    @Html.ValidationSummary()
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.EmailAddress): @Html.TextBoxFor(m => m.EmailAddress)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.ConfirmEmailAddress): @Html.TextBoxFor(m => m.ConfirmEmailAddress)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Password): @Html.PasswordFor(m => m.Password)
+                </div>
+                <div>
+                    @Html.LabelFor(m =>m.ConfirmPassword): @Html.PasswordFor(m => m.ConfirmPassword)
+                </div>
+                <div>
+                    <input type="submit" name="Register" value="Register" />
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>
