@@ -10,18 +10,20 @@ namespace AMI.Business.ClassLogic
     {
         private Class _model;
         private CreateClassHistoryCommand.Factory _createHistoryCommand;
+        private GetClassByIdCommand.Factory _getByIDCommand;
 
         public delegate SaveClassCommand Factory(Class modelToSave);
 
-        public SaveClassCommand(Class classToSave, CreateClassHistoryCommand.Factory createHistory)
+        public SaveClassCommand(Class classToSave, CreateClassHistoryCommand.Factory createHistory, GetClassByIdCommand.Factory getByIDCommand)
         {
             this._model = classToSave;
             this._createHistoryCommand = createHistory;
+            this._getByIDCommand = getByIDCommand;
         }
 
         internal override async Task<Class> Execute(IDBConnection conn)
         {
-            Class modelToUpdate = await conn.ABETContext.Classes.FindAsync(this._model.Id);
+            Class modelToUpdate = await this._getByIDCommand(this._model.Id).Execute(conn);
             if (modelToUpdate != null)
             {
                 ClassHistory history = Mapper.Map<ClassHistory>(modelToUpdate);

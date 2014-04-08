@@ -6,13 +6,13 @@ using AutoMapper;
 
 namespace AMI.Business.ProgramLogic
 {
-    public class GetProgramByIdCommand : AsyncDBCommandBase<Program>
+    public class GetProgramByIDCommand : AsyncDBCommandBase<Program>
     {
         private int _id;
 
-        public delegate GetProgramByIdCommand Factory(int id);
+        public delegate GetProgramByIDCommand Factory(int id);
 
-        public GetProgramByIdCommand(int id)
+        public GetProgramByIDCommand(int id)
         {
             this._id = id;
         }

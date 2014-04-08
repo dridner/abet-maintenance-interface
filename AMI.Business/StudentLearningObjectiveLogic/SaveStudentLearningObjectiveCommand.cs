@@ -9,19 +9,25 @@ namespace AMI.Business.StudentLearningObjectiveLogic
     public class SaveStudentLearningObjectiveCommand : AsyncDBCommandBase<StudentLearningObjective>
     {
         private StudentLearningObjective _model;
+        private CreateStudentLearningObjectiveHistoryCommand.Factory _createHistoryCommand;
+        private GetStudentLearningObjectiveByIDCommand.Factory _getByIDCommand;
 
-        public delegate SaveStudentLearningObjectiveCommand Factory(StudentLearningObjective classToSave);
+        public delegate SaveStudentLearningObjectiveCommand Factory(Outcome modelToSave);
 
-        public SaveStudentLearningObjectiveCommand(StudentLearningObjective modelToSave)
+        public SaveStudentLearningObjectiveCommand(StudentLearningObjective modelToSave, CreateStudentLearningObjectiveHistoryCommand.Factory createHistory, GetStudentLearningObjectiveByIDCommand.Factory getByIDCommand)
         {
             this._model = modelToSave;
+            this._createHistoryCommand = createHistory;
+            this._getByIDCommand = getByIDCommand;
         }
 
         internal override async Task<StudentLearningObjective> Execute(IDBConnection conn)
         {
-            StudentLearningObjective modelToUpdate = await conn.ABETContext.StudentLearningObjectives.FindAsync(this._model.SLOId);
+            StudentLearningObjective modelToUpdate = await this._getByIDCommand(this._model.SLOId).Execute(conn);
             if (modelToUpdate != null)
             {
+                StudentLearningObjectiveHistory history = Mapper.Map<StudentLearningObjectiveHistory>(modelToUpdate);
+                await this._createHistoryCommand(history).Execute(conn);
                 Mapper.Map(this._model, modelToUpdate);
                 conn.ABETContext.SaveChanges();
             }

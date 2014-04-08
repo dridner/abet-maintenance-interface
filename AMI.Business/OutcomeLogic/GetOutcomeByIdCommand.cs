@@ -6,13 +6,13 @@ using AutoMapper;
 
 namespace AMI.Business.OutcomeLogic
 {
-    public class GetOutcomeByIdCommand : AsyncDBCommandBase<Outcome>
+    public class GetOutcomeByIDCommand : AsyncDBCommandBase<Outcome>
     {
         private int _id;
 
-        public delegate GetOutcomeByIdCommand Factory(int id);
+        public delegate GetOutcomeByIDCommand Factory(int id);
 
-        public GetOutcomeByIdCommand(int id)
+        public GetOutcomeByIDCommand(int id)
         {
             this._id = id;
         }

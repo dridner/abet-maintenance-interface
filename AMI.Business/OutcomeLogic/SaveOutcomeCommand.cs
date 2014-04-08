@@ -9,19 +9,25 @@ namespace AMI.Business.OutcomeLogic
     public class SaveOutcomeCommand : AsyncDBCommandBase<Outcome>
     {
         private Outcome _model;
+        private CreateOutcomeHistoryCommand.Factory _createHistoryCommand;
+        private GetOutcomeByIDCommand.Factory _getByIDCommand;
 
-        public delegate SaveOutcomeCommand Factory(Outcome classToSave);
+        public delegate SaveOutcomeCommand Factory(Outcome modelToSave);
 
-        public SaveOutcomeCommand(Outcome modelToSave)
+        public SaveOutcomeCommand(Outcome modelToSave, CreateOutcomeHistoryCommand.Factory createHistory, GetOutcomeByIDCommand.Factory getByIDCommand)
         {
             this._model = modelToSave;
+            this._createHistoryCommand = createHistory;
+            this._getByIDCommand = getByIDCommand;
         }
 
         internal override async Task<Outcome> Execute(IDBConnection conn)
         {
-            Outcome modelToUpdate = await conn.ABETContext.Outcomes.FindAsync(this._model.Id);
+            Outcome modelToUpdate = await this._getByIDCommand(this._model.Id).Execute(conn);
             if (modelToUpdate != null)
             {
+                OutcomeHistory history = Mapper.Map<OutcomeHistory>(modelToUpdate);
+                await this._createHistoryCommand(history).Execute(conn);
                 Mapper.Map(this._model, modelToUpdate);
                 conn.ABETContext.SaveChanges();
             }
