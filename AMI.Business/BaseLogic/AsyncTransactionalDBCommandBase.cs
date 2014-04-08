@@ -14,14 +14,69 @@ namespace AMI.Business.BaseLogic
         public override async Task<T> Execute()
         {
             T result = default(T);
-            
+
+            using (IDBConnection connection = this._connectionFactory.CreateConnection())
+            {
+                try
+                {
+                    connection.BeginTransaction();
+
+                    result = await this.ExecuteTransaction(connection);
+
+                    if (this.ForcedRollback)
+                    {
+                        connection.Rollback();
+                    }
+                    else
+                    {
+                        connection.Commit();
+                    }
+                }
+                catch (Exception)
+                {
+                    connection.Rollback();
+                    throw;
+                }
+            }
 
             return result;
         }
 
-        internal override Task<T> Execute(Data.DataConnection.IDBConnection conn)
+        internal override async Task<T> Execute(IDBConnection conn)
         {
-            throw new NotImplementedException();
+            T result = default(T);
+
+            if (!conn.IsTransactionInProgress())
+            {
+                try
+                {
+                    conn.BeginTransaction();
+
+                    result = await this.ExecuteTransaction(conn);
+
+                    if(this.ForcedRollback)
+                    {
+                        conn.Rollback();
+                    }
+                    else
+                    {
+                        conn.Commit();
+                    }
+                }
+                catch (Exception)
+                {
+                    conn.Rollback();
+                    throw;
+                }
+            }
+            else
+            {
+                result = await this.ExecuteTransaction(conn);
+            }
+
+            return result;
         }
+
+        protected abstract Task<T> ExecuteTransaction(IDBConnection conn);
     }
 }

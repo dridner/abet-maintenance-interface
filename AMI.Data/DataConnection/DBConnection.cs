@@ -7,11 +7,14 @@ using AMI.Data.DatabaseContext;
 using AMI.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using System.Data;
+using System.Data.Entity;
 
 namespace AMI.Data.DataConnection
 {
     public class DBConnection : IDBConnection
     {
+        private DbContextTransaction _currentTransaction;
         private ABETContext _abetContext;
         private UserManager<ApplicationUser> _userManager;
         private readonly string _connectionString;
@@ -74,17 +77,50 @@ namespace AMI.Data.DataConnection
             {
                 if (disposing)
                 {
-                    if (_userManager != null)
+                    if (this._currentTransaction != null)
                     {
-                        _userManager.Dispose();
+                        this._currentTransaction.Commit();
                     }
-                    if (_abetContext != null)
+                    if (this._userManager != null)
                     {
-                        _abetContext.Dispose();
+                        this._userManager.Dispose();
+                    }
+                    if (this._abetContext != null)
+                    {
+                        this._abetContext.Dispose();
                     }
                 }
             }
             this._disposed = true;
+        }
+
+
+        public void BeginTransaction()
+        {
+            this._currentTransaction = this.ABETContext.Database.BeginTransaction(IsolationLevel.Serializable);
+        }
+
+        public bool IsTransactionInProgress()
+        {
+            return this._currentTransaction != null;
+        }
+
+        public void Commit()
+        {
+            if (this._currentTransaction != null)
+            {
+                this._currentTransaction.Commit();
+                this._currentTransaction = null;
+            }
+        }
+
+        public void Rollback()
+        {
+            if (this._currentTransaction != null)
+            {
+                this._currentTransaction.Commit();
+                this._currentTransaction = null;
+            }
         }
     }
 }

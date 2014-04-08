@@ -16,5 +16,9 @@ namespace AMI.Data.DataConnection
         UserManager<ApplicationUser> UserManager { get; }
 
         void SaveAllChanges();
+        void BeginTransaction();
+        void Commit();
+        bool IsTransactionInProgress();
+        void Rollback();
     }
 }

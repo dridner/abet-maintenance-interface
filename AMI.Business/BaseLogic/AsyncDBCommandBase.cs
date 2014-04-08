@@ -9,14 +9,14 @@ namespace AMI.Business.BaseLogic
 {
     public abstract class AsyncDBCommandBase<T> : AsyncCommandBase<T>
     {
-        
+        protected IDBConnectionFactory _connectionFactory = DBConnectionFactory.GetInstance();
 
         public override async Task<T> Execute()
         {
             T obj = default(T);
             try
             {
-                using (IDBConnection connection = DBConnectionFactory.CreateConnection())
+                using (IDBConnection connection = this._connectionFactory.CreateConnection())
                 {
                     obj = await this.Execute(connection);
                 }

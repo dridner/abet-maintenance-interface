@@ -7,9 +7,33 @@ using System.Threading.Tasks;
 
 namespace AMI.Data.DataConnection
 {
-    public class DBConnectionFactory
+    public class DBConnectionFactory : IDBConnectionFactory
     {
-        public static IDBConnection CreateConnection()
+        private static DBConnectionFactory _instance;
+        private static object _lockObject = new object();
+
+        private DBConnectionFactory()
+        {
+
+        }
+
+        public static DBConnectionFactory GetInstance()
+        {
+            if (_instance == null)
+            {
+                lock (_lockObject)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new DBConnectionFactory();
+                    }
+                }
+            }
+
+            return _instance;
+        }
+
+        public IDBConnection CreateConnection()
         {
             string connectionStringKey = null;
             if (System.Diagnostics.Debugger.IsAttached)
