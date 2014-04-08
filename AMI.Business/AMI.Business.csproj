@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="BaseLogic\AsyncCommandBase.cs" />
     <Compile Include="BaseLogic\AsyncDBCommandBase.cs" />
+    <Compile Include="BaseLogic\AsyncTransactionalDBCommandBase.cs" />
     <Compile Include="BaseLogic\IAsyncCommand.cs" />
     <Compile Include="BaseLogic\IAsyncDBCommand.cs" />
     <Compile Include="ClassLogic\CreateClassHistoryCommand.cs" />

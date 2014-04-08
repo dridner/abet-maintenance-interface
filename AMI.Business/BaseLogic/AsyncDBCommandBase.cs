@@ -9,6 +9,8 @@ namespace AMI.Business.BaseLogic
 {
     public abstract class AsyncDBCommandBase<T> : AsyncCommandBase<T>
     {
+        
+
         public override async Task<T> Execute()
         {
             T obj = default(T);
