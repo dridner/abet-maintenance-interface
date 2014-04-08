@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity;
 
 namespace AMI.Business.UserLogic
 {
-    public class RegisterUserCommand : DBCommandBase<IdentityResult>
+    public class RegisterUserCommand : AsyncDBCommandBase<IdentityResult>
     {
         private ApplicationUser _user;
         private string _password;
@@ -21,7 +21,7 @@ namespace AMI.Business.UserLogic
             this._password = password;
         }
 
-        public override async Task<IdentityResult> Execute(IDBConnection conn)
+        internal override async Task<IdentityResult> Execute(IDBConnection conn)
         {
             var manager = conn.UserManager;
             var result = await manager.CreateAsync(this._user, this._password);

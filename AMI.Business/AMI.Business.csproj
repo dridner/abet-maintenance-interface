@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -75,11 +81,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseLogic\DBCommandBase.cs" />
-    <Compile Include="BaseLogic\ICommand.cs" />
-    <Compile Include="BaseLogic\IDBCommand.cs" />
+    <Compile Include="BaseLogic\AsyncCommandBase.cs" />
+    <Compile Include="BaseLogic\AsyncDBCommandBase.cs" />
+    <Compile Include="BaseLogic\IAsyncCommand.cs" />
+    <Compile Include="BaseLogic\IAsyncDBCommand.cs" />
+    <Compile Include="ClassLogic\CreateClassHistoryCommand.cs" />
+    <Compile Include="ClassLogic\DeleteClassCommand.cs" />
+    <Compile Include="ClassLogic\GetClassByIdCommand.cs" />
     <Compile Include="ClassLogic\SaveClassCommand.cs" />
+    <Compile Include="OutcomeLogic\DeleteOutcomeCommand.cs" />
+    <Compile Include="OutcomeLogic\GetOutcomeByIdCommand.cs" />
+    <Compile Include="OutcomeLogic\SaveOutcomeCommand.cs" />
+    <Compile Include="ProgramLogic\DeleteProgramCommand.cs" />
+    <Compile Include="ProgramLogic\GetProgramByIdCommand.cs" />
+    <Compile Include="ProgramLogic\SaveProgramCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentLearningObjectiveLogic\DeleteStudentLearningObjectiveCommand.cs" />
+    <Compile Include="StudentLearningObjectiveLogic\GetStudentLearningObjectiveByIDCommand.cs" />
+    <Compile Include="StudentLearningObjectiveLogic\SaveStudentLearningObjectiveCommand.cs" />
     <Compile Include="UserLogic\ChangeUserPasswordCommand.cs" />
     <Compile Include="UserLogic\RegisterUserCommand.cs" />
     <Compile Include="UserLogic\SignInUserCommand.cs" />
@@ -98,6 +117,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll">
+      <Link>AutoMapper.Net4.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

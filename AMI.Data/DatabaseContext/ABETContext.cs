@@ -17,9 +17,18 @@ namespace AMI.Data.DatabaseContext
         }
 
         public DbSet<Class> Classes { get; set; }
+        public DbSet<ClassHistory> ClassHistory { get; set; }
+
         public DbSet<Outcome> Outcomes { get; set; }
+        public DbSet<OutcomeHistory> OutcomeHistory { get; set; }
+
         public DbSet<StudentLearningObjective> StudentLearningObjectives { get; set; }
+        public DbSet<StudentLearningObjectiveHistory> StudentLearningObjectiveHistory { get; set; }
+
         public DbSet<CommitteeMember> CommitteeMembers { get; set; }
+        public DbSet<CommitteeMemberHistory> CommitteeMemberHistory { get; set; }
+
+        public DbSet<Program> Programs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
