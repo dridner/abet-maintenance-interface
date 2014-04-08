@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AMI.Business.ClassLogic
 {
-    public class GetClassByIdCommand : DBCommandBase<Class>
+    public class GetClassByIdCommand : AsyncDBCommandBase<Class>
     {
         private int _id;
 
@@ -17,7 +17,7 @@ namespace AMI.Business.ClassLogic
             this._id = id;
         }
 
-        public override async Task<Class> Execute(IDBConnection conn)
+        internal override async Task<Class> Execute(IDBConnection conn)
         {
             return await conn.ABETContext.Classes.FindAsync(this._id);
         }

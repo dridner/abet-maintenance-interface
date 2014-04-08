@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AMI.Business.OutcomeLogic
 {
-    public class SaveOutcomeCommand : DBCommandBase<Outcome>
+    public class SaveOutcomeCommand : AsyncDBCommandBase<Outcome>
     {
         private Outcome _model;
 
@@ -17,7 +17,7 @@ namespace AMI.Business.OutcomeLogic
             this._model = modelToSave;
         }
 
-        public override async Task<Outcome> Execute(IDBConnection conn)
+        internal override async Task<Outcome> Execute(IDBConnection conn)
         {
             Outcome modelToUpdate = await conn.ABETContext.Outcomes.FindAsync(this._model.Id);
             if (modelToUpdate != null)

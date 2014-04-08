@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity;
 
 namespace AMI.Business.UserLogic
 {
-    public class ChangeUserPasswordCommand : DBCommandBase<IdentityResult>
+    public class ChangeUserPasswordCommand : AsyncDBCommandBase<IdentityResult>
     {
         private ApplicationUser _user;
         private string _oldPassword;
@@ -23,7 +23,7 @@ namespace AMI.Business.UserLogic
             this._newPassword = newPassword;
         }
 
-        public override async Task<IdentityResult> Execute(IDBConnection conn)
+        internal override async Task<IdentityResult> Execute(IDBConnection conn)
         {
             return await conn.UserManager.ChangePasswordAsync(this._user.Id, this._oldPassword, this._newPassword);
         }

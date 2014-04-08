@@ -5,7 +5,7 @@ using AMI.Model;
 
 namespace AMI.Business.ProgramLogic
 {
-    public class DeleteProgramCommand : DBCommandBase<bool>
+    public class DeleteProgramCommand : AsyncDBCommandBase<bool>
     {
         private int _id;
 
@@ -16,7 +16,7 @@ namespace AMI.Business.ProgramLogic
             this._id = id;
         }
 
-        public override async Task<bool> Execute(IDBConnection conn)
+        internal override async Task<bool> Execute(IDBConnection conn)
         {
             Program modelToDelete = await conn.ABETContext.Programs.FindAsync(this._id);
             return modelToDelete == conn.ABETContext.Programs.Remove(modelToDelete);

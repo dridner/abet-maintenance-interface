@@ -7,16 +7,16 @@ using AMI.Data.DataConnection;
 
 namespace AMI.Business.BaseLogic
 {
-    public abstract class DBCommandBase<T> : IDBCommand<T>, ICommand<T>
+    public abstract class AsyncDBCommandBase<T> : AsyncCommandBase<T>
     {
-        public Task<T> Execute()
+        public override async Task<T> Execute()
         {
-            Task<T> obj = default(Task<T>);
+            T obj = default(T);
             try
             {
                 using (IDBConnection connection = DBConnectionFactory.CreateConnection())
                 {
-                    obj = this.Execute(connection);
+                    obj = await this.Execute(connection);
                 }
             }
             catch (Exception)
@@ -27,6 +27,6 @@ namespace AMI.Business.BaseLogic
             return obj;
         }
 
-        public abstract Task<T> Execute(IDBConnection conn);
+        internal abstract Task<T> Execute(IDBConnection conn);
     }
 }

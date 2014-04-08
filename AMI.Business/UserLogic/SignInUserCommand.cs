@@ -13,7 +13,7 @@ using System.Security.Claims;
 
 namespace AMI.Business.UserLogic
 {
-    public class SignInUserCommand : DBCommandBase<ClaimsIdentity>
+    public class SignInUserCommand : AsyncDBCommandBase<ClaimsIdentity>
     {
         private string username;
         private string password;
@@ -24,7 +24,7 @@ namespace AMI.Business.UserLogic
             this.password = password;
         }
 
-        public override async Task<ClaimsIdentity> Execute(IDBConnection conn)
+        internal override async Task<ClaimsIdentity> Execute(IDBConnection conn)
         {
             ClaimsIdentity identity = null;
             ApplicationUser user = await conn.UserManager.FindAsync(this.username, this.password);

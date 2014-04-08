@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AMI.Business.ProgramLogic
 {
-    public class SaveProgramCommand : DBCommandBase<Program>
+    public class SaveProgramCommand : AsyncDBCommandBase<Program>
     {
         private Program _model;
 
@@ -17,7 +17,7 @@ namespace AMI.Business.ProgramLogic
             this._model = modelToSave;
         }
 
-        public override async Task<Program> Execute(IDBConnection conn)
+        internal override async Task<Program> Execute(IDBConnection conn)
         {
             Program modelToUpdate = await conn.ABETContext.Programs.FindAsync(this._model.ProgramId);
             if (modelToUpdate != null)

@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AMI.Business.ClassLogic
 {
-    public class SaveClassCommand : DBCommandBase<Class>
+    public class SaveClassCommand : AsyncDBCommandBase<Class>
     {
         private Class _model;
         private CreateClassHistoryCommand.Factory _createHistoryCommand;
@@ -19,7 +19,7 @@ namespace AMI.Business.ClassLogic
             this._createHistoryCommand = createHistory;
         }
 
-        public override async Task<Class> Execute(IDBConnection conn)
+        internal override async Task<Class> Execute(IDBConnection conn)
         {
             Class modelToUpdate = await conn.ABETContext.Classes.FindAsync(this._model.Id);
             if (modelToUpdate != null)

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AMI.Data.DataConnection;
-
 
 namespace AMI.Business.BaseLogic
 {
-    public interface IDBCommand<T> : ICommand<T>
+    public interface IAsyncCommand<T>
     {
-        Task<T> Execute(IDBConnection connection);
+        Task<T> Execute();
     }
 }

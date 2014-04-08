@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AMI.Business.StudentLearningObjectiveLogic
 {
-    public class SaveStudentLearningObjectiveCommand : DBCommandBase<StudentLearningObjective>
+    public class SaveStudentLearningObjectiveCommand : AsyncDBCommandBase<StudentLearningObjective>
     {
         private StudentLearningObjective _model;
 
@@ -17,7 +17,7 @@ namespace AMI.Business.StudentLearningObjectiveLogic
             this._model = modelToSave;
         }
 
-        public override async Task<StudentLearningObjective> Execute(IDBConnection conn)
+        internal override async Task<StudentLearningObjective> Execute(IDBConnection conn)
         {
             StudentLearningObjective modelToUpdate = await conn.ABETContext.StudentLearningObjectives.FindAsync(this._model.SLOId);
             if (modelToUpdate != null)

@@ -5,7 +5,7 @@ using AMI.Model;
 
 namespace AMI.Business.StudentLearningObjectiveLogic
 {
-    public class DeleteStudentLearningObjectiveCommand : DBCommandBase<bool>
+    public class DeleteStudentLearningObjectiveCommand : AsyncDBCommandBase<bool>
     {
         private int _id;
 
@@ -16,7 +16,7 @@ namespace AMI.Business.StudentLearningObjectiveLogic
             this._id = id;
         }
 
-        public override async Task<bool> Execute(IDBConnection conn)
+        internal override async Task<bool> Execute(IDBConnection conn)
         {
             StudentLearningObjective modelToDelete = await conn.ABETContext.StudentLearningObjectives.FindAsync(this._id);
             return modelToDelete == conn.ABETContext.StudentLearningObjectives.Remove(modelToDelete);

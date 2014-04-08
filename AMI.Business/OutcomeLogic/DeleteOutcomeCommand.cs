@@ -5,7 +5,7 @@ using AMI.Model;
 
 namespace AMI.Business.OutcomeLogic
 {
-    public class DeleteOutcomeCommand : DBCommandBase<bool>
+    public class DeleteOutcomeCommand : AsyncDBCommandBase<bool>
     {
         private int _id;
 
@@ -16,7 +16,7 @@ namespace AMI.Business.OutcomeLogic
             this._id = id;
         }
 
-        public override async Task<bool> Execute(IDBConnection conn)
+        internal override async Task<bool> Execute(IDBConnection conn)
         {
             Outcome modelToDelete = await conn.ABETContext.Outcomes.FindAsync(this._id);
             return modelToDelete == conn.ABETContext.Outcomes.Remove(modelToDelete);

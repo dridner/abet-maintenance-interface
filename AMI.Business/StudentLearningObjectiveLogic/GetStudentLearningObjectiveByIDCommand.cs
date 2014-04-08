@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AMI.Business.StudentLearningObjectiveLogic
 {
-    public class GetStudentLearningObjectiveByIDCommand : DBCommandBase<StudentLearningObjective>
+    public class GetStudentLearningObjectiveByIDCommand : AsyncDBCommandBase<StudentLearningObjective>
     {
         private int _id;
 
@@ -17,7 +17,7 @@ namespace AMI.Business.StudentLearningObjectiveLogic
             this._id = id;
         }
 
-        public override async Task<StudentLearningObjective> Execute(IDBConnection conn)
+        internal override async Task<StudentLearningObjective> Execute(IDBConnection conn)
         {
             return await conn.ABETContext.StudentLearningObjectives.FindAsync(this._id);
         }

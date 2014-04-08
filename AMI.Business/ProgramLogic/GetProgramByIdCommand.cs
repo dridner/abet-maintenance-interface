@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AMI.Business.ProgramLogic
 {
-    public class GetProgramByIdCommand : DBCommandBase<Program>
+    public class GetProgramByIdCommand : AsyncDBCommandBase<Program>
     {
         private int _id;
 
@@ -17,7 +17,7 @@ namespace AMI.Business.ProgramLogic
             this._id = id;
         }
 
-        public override async Task<Program> Execute(IDBConnection conn)
+        internal override async Task<Program> Execute(IDBConnection conn)
         {
             return await conn.ABETContext.Programs.FindAsync(this._id);
         }

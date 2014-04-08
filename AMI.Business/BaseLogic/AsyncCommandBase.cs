@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AMI.Business.BaseLogic
 {
-    public interface ICommand<T>
+    public abstract class AsyncCommandBase<T> : IAsyncCommand<T>
     {
-        Task<T> Execute();
+        public abstract Task<T> Execute();
     }
 }

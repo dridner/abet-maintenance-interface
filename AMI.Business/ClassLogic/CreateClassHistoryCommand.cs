@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AMI.Business.ClassLogic
 {
-    public class CreateClassHistoryCommand : DBCommandBase<ClassHistory>
+    public class CreateClassHistoryCommand : AsyncDBCommandBase<ClassHistory>
     {
         private ClassHistory _model;
 
@@ -17,7 +17,7 @@ namespace AMI.Business.ClassLogic
             this._model = classToSave;
         }
 
-        public override async Task<ClassHistory> Execute(IDBConnection conn)
+        internal override async Task<ClassHistory> Execute(IDBConnection conn)
         {
             conn.ABETContext.ClassHistory.Add(this._model);
             return this._model;
