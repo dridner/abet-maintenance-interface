@@ -81,7 +81,7 @@
     <Compile Include="DataConnection\IDBConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeedInformation\EECS1010Seed.cs" />
-    <Compile Include="SeedInformation\ProgramSeed.cs" />
+    <Compile Include="SeedInformation\CriteriaSeed.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

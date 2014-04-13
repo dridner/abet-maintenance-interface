@@ -8,11 +8,19 @@ using System.Threading.Tasks;
 
 namespace AMI.Model
 {
-    public class Program
+    public class Criteria
     {
+        public Criteria()
+        {
+
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public ICollection<Outcome> Outcomes { get; set; }
+        public ApplicationUser CreatedBy { get; set; }
     }
 }

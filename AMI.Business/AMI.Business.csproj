@@ -98,9 +98,9 @@
     <Compile Include="OutcomeLogic\DeleteOutcomeCommand.cs" />
     <Compile Include="OutcomeLogic\GetOutcomeByIDCommand.cs" />
     <Compile Include="OutcomeLogic\SaveOutcomeCommand.cs" />
-    <Compile Include="ProgramLogic\DeleteProgramCommand.cs" />
-    <Compile Include="ProgramLogic\GetProgramByIDCommand.cs" />
-    <Compile Include="ProgramLogic\SaveProgramCommand.cs" />
+    <Compile Include="CriteriaLogic\DeleteCriteriaCommand.cs" />
+    <Compile Include="CriteriaLogic\GetCriteriaByIDCommand.cs" />
+    <Compile Include="CriteriaLogic\SaveCriteriaCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentLearningObjectiveLogic\CreateStudentLearningObjectiveHistoryCommand.cs" />
     <Compile Include="StudentLearningObjectiveLogic\DeleteStudentLearningObjectiveCommand.cs" />

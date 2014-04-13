@@ -18,6 +18,7 @@ namespace AMI.Data.SeedInformation
             eecs1010.Prefix = "EECS";
             eecs1010.Number = "1010";
             eecs1010.CreatedOn = DateTime.UtcNow;
+            eecs1010.LearningObjectives = new List<StudentLearningObjective>();
 
             StudentLearningObjective objective = new StudentLearningObjective();
             objective.Class = eecs1010;

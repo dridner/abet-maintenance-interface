@@ -6,20 +6,20 @@ using AutoMapper;
 
 namespace AMI.Business.ProgramLogic
 {
-    public class SaveProgramCommand : AsyncDBCommandBase<Program>
+    public class SaveCriteriaCommand : AsyncDBCommandBase<Criteria>
     {
-        private Program _model;
+        private Criteria _model;
 
-        public delegate SaveProgramCommand Factory(Program classToSave);
+        public delegate SaveCriteriaCommand Factory(Criteria classToSave);
 
-        public SaveProgramCommand(Program modelToSave)
+        public SaveCriteriaCommand(Criteria modelToSave)
         {
             this._model = modelToSave;
         }
 
-        internal override async Task<Program> Execute(IDBConnection conn)
+        internal override async Task<Criteria> Execute(IDBConnection conn)
         {
-            Program modelToUpdate = await conn.ABETContext.Programs.FindAsync(this._model.Id);
+            Criteria modelToUpdate = await conn.ABETContext.Criterias.FindAsync(this._model.Id);
             if (modelToUpdate != null)
             {
                 Mapper.Map(this._model, modelToUpdate);
@@ -27,7 +27,7 @@ namespace AMI.Business.ProgramLogic
             }
             else
             {
-                conn.ABETContext.Programs.Add(this._model);
+                conn.ABETContext.Criterias.Add(this._model);
                 modelToUpdate = this._model;
             }
 

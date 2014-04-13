@@ -12,6 +12,11 @@ namespace AMI.Data.DatabaseContext
 {
     public class ABETContext : DbContext
     {
+        public ABETContext()
+        {
+
+        }
+
         internal ABETContext(string connectionString)
             :base(connectionString)
         {
@@ -30,7 +35,7 @@ namespace AMI.Data.DatabaseContext
         public DbSet<CommitteeMember> CommitteeMembers { get; set; }
         public DbSet<CommitteeMemberHistory> CommitteeMemberHistory { get; set; }
 
-        public DbSet<Program> Programs { get; set; }
+        public DbSet<Criteria> Criterias { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,6 +43,7 @@ namespace AMI.Data.DatabaseContext
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(l => l.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+            modelBuilder.Entity<Outcome>().HasKey(o => new { o.Id, o.CriteriaId });
             Database.SetInitializer<ABETContext>(new CreateABETDatabaseIfNotExists());
         }
 
@@ -45,7 +51,7 @@ namespace AMI.Data.DatabaseContext
         {
             protected override void Seed(ABETContext context)
             {
-                ProgramSeed.Seed(context);
+                CriteriaSeed.Seed(context);
                 EECS1010Seed.Seed(context);
             }
         }

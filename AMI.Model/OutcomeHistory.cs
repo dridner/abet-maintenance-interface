@@ -13,12 +13,14 @@ namespace AMI.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public Outcome Outcome { get; set; }
         public string Text { get; set; }
 
         public bool IsActive { get; set; }
-        public ApplicationUser CreatedBy { get; set; }
+        public virtual ApplicationUser CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime LastActiveDate { get; set; }
+        
+        public virtual Outcome Outcome { get; set; }
+        public virtual Criteria Criteria { get; set; }
     }
 }
