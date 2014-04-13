@@ -19,7 +19,7 @@ namespace AMI.Business.ProgramLogic
 
         internal override async Task<Program> Execute(IDBConnection conn)
         {
-            Program modelToUpdate = await conn.ABETContext.Programs.FindAsync(this._model.ProgramId);
+            Program modelToUpdate = await conn.ABETContext.Programs.FindAsync(this._model.Id);
             if (modelToUpdate != null)
             {
                 Mapper.Map(this._model, modelToUpdate);

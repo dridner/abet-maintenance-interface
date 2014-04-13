@@ -23,7 +23,7 @@ namespace AMI.Business.StudentLearningObjectiveLogic
 
         internal override async Task<StudentLearningObjective> Execute(IDBConnection conn)
         {
-            StudentLearningObjective modelToUpdate = await this._getByIDCommand(this._model.SLOId).Execute(conn);
+            StudentLearningObjective modelToUpdate = await this._getByIDCommand(this._model.Id).Execute(conn);
             if (modelToUpdate != null)
             {
                 StudentLearningObjectiveHistory history = Mapper.Map<StudentLearningObjectiveHistory>(modelToUpdate);

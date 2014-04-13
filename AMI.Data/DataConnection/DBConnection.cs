@@ -47,7 +47,7 @@ namespace AMI.Data.DataConnection
             {
                 if (_userManager == null)
                 {
-                    _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new IdentityDbContext<ApplicationUser>(this._connectionString)));
+                    _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ABETContext));
                 }
                 return _userManager;
             }

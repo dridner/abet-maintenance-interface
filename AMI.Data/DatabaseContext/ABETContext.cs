@@ -4,11 +4,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AMI.Data.SeedInformation;
 using AMI.Model;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AMI.Data.DatabaseContext
 {
-    public class ABETContext : BaseContext<ABETContext>
+    public class ABETContext : DbContext
     {
         internal ABETContext(string connectionString)
             :base(connectionString)
@@ -32,7 +34,20 @@ namespace AMI.Data.DatabaseContext
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer<ABETContext>(new CreateDatabaseIfNotExists<ABETContext>());
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(l => l.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+            Database.SetInitializer<ABETContext>(new CreateABETDatabaseIfNotExists());
+        }
+
+        private class CreateABETDatabaseIfNotExists : CreateDatabaseIfNotExists<ABETContext>
+        {
+            protected override void Seed(ABETContext context)
+            {
+                ProgramSeed.Seed(context);
+                EECS1010Seed.Seed(context);
+            }
         }
     }
 }
