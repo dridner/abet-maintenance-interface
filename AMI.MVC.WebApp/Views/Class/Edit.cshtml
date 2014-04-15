@@ -1,0 +1,23 @@
+﻿@model AMI.Model.Class
+
+@{
+    ViewBag.Title = "Edit Class";
+}
+
+@using (Html.BeginForm(MVC5.Class.ActionNames.Edit, MVC5.Class.Name, FormMethod.Post))
+{
+    <div>
+        <div>@Html.LabelFor(m => m.Name)</div>
+        <div>@Html.TextBoxFor(m => m.Name)</div>
+        <div>@Html.ValidationMessageFor(m => m.Name)</div>
+
+        <div>@Html.LabelFor(m => m.Number)</div>
+        <div>@Html.TextBoxFor(m => m.Number)</div>
+        <div>@Html.ValidationMessageFor(m => m.Number)</div>
+
+        <div>@Html.LabelFor(m => m.Prefix)</div>
+        <div>@Html.TextBoxFor(m => m.Prefix)</div>
+        <div>@Html.ValidationMessageFor(m => m.Prefix)</div>
+        <button type="submit">Save</button>
+    </div>
+}

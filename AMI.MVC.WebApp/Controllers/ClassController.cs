@@ -1,42 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AMI.Business.ClassLogic;
+using AMI.Model;
 
 namespace AMI.MVC.WebApp.Controllers
 {
-    public class ClassController : Controller
+    [Authorize]
+    public partial class ClassController : AsyncController
     {
-        //
-        // GET: /Class/
-        public ActionResult Index()
+        private SaveClassCommand.Factory _saveClassCommand;
+        private GetClassByIdCommand.Factory _getClassByIDCommand;
+        private DeleteClassCommand.Factory _deleteClassCommand;
+
+        public ClassController(SaveClassCommand.Factory saveClassCommand, GetClassByIdCommand.Factory getClassByIDCommand, DeleteClassCommand.Factory deleteClassCommand)
         {
-            return View();
+            this._saveClassCommand = saveClassCommand;
+            this._getClassByIDCommand = getClassByIDCommand;
+            this._deleteClassCommand = deleteClassCommand;
         }
 
-        //
-        // GET: /Class/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public virtual async Task<ActionResult> Edit(int id = 0)
         {
-            return View();
+            var model = await this._getClassByIDCommand(id).Execute();
+            if (model == null)
+            {
+                model = new Class();
+            }
+
+            return View(model);
         }
 
-        //
-        // GET: /Class/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Class/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public virtual async Task<ActionResult> Edit(Class model)
         {
             try
             {
-                // TODO: Add insert logic here
+                await this._saveClassCommand(model).Execute();
 
                 return RedirectToAction("Index");
             }
@@ -46,52 +50,11 @@ namespace AMI.MVC.WebApp.Controllers
             }
         }
 
-        //
-        // GET: /Class/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Class/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public virtual async Task<ActionResult> Delete(int id)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Class/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Class/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            await this._deleteClassCommand(id).Execute();
+            return RedirectToAction(MVC5.Home.Index());
         }
     }
 }

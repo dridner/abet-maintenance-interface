@@ -7,11 +7,11 @@ using System.Web.Mvc;
 namespace AMI.MVC.WebApp.Controllers
 {
     [AllowAnonymous]
-    public class PublicController : Controller
+    public partial class PublicController : Controller
     {
 
 
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }

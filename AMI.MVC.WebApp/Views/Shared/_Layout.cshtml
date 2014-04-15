@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width" />
         <title>@ViewBag.Title</title>
         @Styles.Render("~/Styles/css")
+        @Scripts.Render(Links.Scripts.jquery_1_10_2_min_js)
+        @Scripts.Render(Links.Scripts.jquery_validate_min_js)
+        @Scripts.Render(Links.Scripts.jquery_validate_unobtrusive_min_js)
     </head>
     <body>
         <div id="layoutHeader">

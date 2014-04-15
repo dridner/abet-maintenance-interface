@@ -13,7 +13,7 @@ using Microsoft.Owin.Security;
 namespace AMI.MVC.WebApp.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public partial class AccountController : Controller
     {
         #region Properties
         public IAuthenticationManager AuthenticationManager { get { return HttpContext.GetOwinContext().Authentication; } }
@@ -21,7 +21,7 @@ namespace AMI.MVC.WebApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Login()
+        public virtual ActionResult Login()
         {
             return View();
         }
@@ -29,7 +29,7 @@ namespace AMI.MVC.WebApp.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel model)
+        public virtual async Task<ActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
@@ -47,7 +47,7 @@ namespace AMI.MVC.WebApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Register()
+        public virtual ActionResult Register()
         {
             return View();
         }
@@ -55,7 +55,7 @@ namespace AMI.MVC.WebApp.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterModel registerModel)
+        public virtual async Task<ActionResult> Register(RegisterModel registerModel)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult Logout()
+        public virtual ActionResult Logout()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return View();
