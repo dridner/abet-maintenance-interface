@@ -19,7 +19,7 @@ namespace AMI.Model
         public string Number { get; set; }
 
         public bool IsActive { get; set; }
-        public virtual ApplicationUser CreatedBy { get; set; }
+        public virtual ApplicationUser CreatedByUser { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime LastActiveDate { get; set; }
     }

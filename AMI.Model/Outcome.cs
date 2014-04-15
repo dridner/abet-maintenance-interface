@@ -22,7 +22,7 @@ namespace AMI.Model
         public string Text { get; set; }
 
         public bool IsActive { get; set; }
-        public ApplicationUser CreatedBy { get; set; }
+        public virtual ApplicationUser CreatedByUser { get; set; }
         public DateTime CreatedOn { get; set; }
 
         public virtual Criteria Criteria { get; set; }
