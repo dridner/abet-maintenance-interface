@@ -80,7 +80,7 @@
     <Compile Include="DataConnection\IDBConnection.cs" />
     <Compile Include="DataConnection\IDBConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeedInformation\EECS1010Seed.cs" />
+    <Compile Include="SeedInformation\ClassSeed.cs" />
     <Compile Include="SeedInformation\CriteriaSeed.cs" />
     <Compile Include="SeedInformation\UserSeed.cs" />
   </ItemGroup>

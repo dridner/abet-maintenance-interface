@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AMI.Data.SeedInformation;
 using AMI.Model;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AMI.Data.DatabaseContext
@@ -51,10 +52,11 @@ namespace AMI.Data.DatabaseContext
         {
             protected override void Seed(ABETContext context)
             {
-                var systemUserAccount = UserSeed.Seed(context);
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var systemUserAccount = UserSeed.Seed(userManager, context);
 
                 CriteriaSeed.Seed(context, systemUserAccount);
-                EECS1010Seed.Seed(context);
+                ClassSeed.Seed(context, systemUserAccount, userManager);
             }
         }
     }

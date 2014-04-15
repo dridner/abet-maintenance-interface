@@ -64,6 +64,7 @@
     <Compile Include="StudentLearningObjective.cs" />
     <Compile Include="StudentLearningObjectiveHistory.cs" />
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="Util\CommitteeRank.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

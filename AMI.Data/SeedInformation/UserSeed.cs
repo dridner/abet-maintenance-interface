@@ -12,10 +12,8 @@ namespace AMI.Data.SeedInformation
 {
     public static class UserSeed
     {
-        public static ApplicationUser Seed(ABETContext context)
+        public static ApplicationUser Seed(UserManager<ApplicationUser> userManager, ABETContext context)
         {
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-
             CreateUserWithUserNameAndEmail(userManager, "SYSTEM","USER", "SYSTEM_USER", "SystemUser@systemUser.com");
             CreateUserWithUserNameAndEmail(userManager, "Richard", "Molyet", "richard.molyet", "richard.molyet@utoledo.edu");
             CreateUserWithUserNameAndEmail(userManager, "Weng", "Kang", "weng.kang", "weng.kang@utoledo.edu");
@@ -46,6 +44,7 @@ namespace AMI.Data.SeedInformation
             user.LastName = lastName;
             user.UserName = username;
             user.Email = email;
+            user.CreatedOn = DateTime.UtcNow;
 
             return CreateUser(manager, user);
         }

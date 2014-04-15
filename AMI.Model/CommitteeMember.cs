@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AMI.Model.Util;
 
 namespace AMI.Model
 {
@@ -15,7 +16,7 @@ namespace AMI.Model
         public int Id { get; set; }
         public virtual Class Class { get; set; }
         public virtual ApplicationUser User { get; set; }
-        public int CommitteeRank { get; set; }
+        public CommitteeRank CommitteeRank { get; set; }
 
         public bool IsActive { get; set; }
         public virtual ApplicationUser CreatedByUser { get; set; }

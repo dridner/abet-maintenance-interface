@@ -20,6 +20,7 @@ namespace AMI.Model
         public bool IsActive { get; set; }
         public DateTime CreatedOn { get; set; }
 
+        public virtual ICollection<CommitteeMember> CommitteeMembers { get; set; }
         public virtual ApplicationUser CreatedByUser { get; set; }
         public virtual ICollection<StudentLearningObjective> LearningObjectives { get; set; }
     }
