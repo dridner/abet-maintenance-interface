@@ -14,7 +14,8 @@ namespace AMI.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public virtual Class Class { get; set; }
-        public string Name { get; set; }
+        public virtual ApplicationUser User { get; set; }
+        public int CommitteeRank { get; set; }
 
         public bool IsActive { get; set; }
         public virtual ApplicationUser CreatedBy { get; set; }

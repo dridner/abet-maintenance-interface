@@ -47,10 +47,11 @@ namespace AMI.Data.DatabaseContext
             Database.SetInitializer<ABETContext>(new CreateABETDatabaseIfNotExists());
         }
 
-        private class CreateABETDatabaseIfNotExists : CreateDatabaseIfNotExists<ABETContext>
+        private class CreateABETDatabaseIfNotExists : DropCreateDatabaseAlways<ABETContext>//TODO Make sure to change this back evenutally.
         {
             protected override void Seed(ABETContext context)
             {
+                UserSeed.Seed(context);
                 CriteriaSeed.Seed(context);
                 EECS1010Seed.Seed(context);
             }
