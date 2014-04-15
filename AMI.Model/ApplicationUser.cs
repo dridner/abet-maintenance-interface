@@ -12,7 +12,7 @@ namespace AMI.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsActive { get; set; }
-        public ApplicationUser CreatedBy { get; set; }
+        public ApplicationUser CreatedByUser { get; set; }
         public DateTime CreatedOn { get; set; }
     }
 }

@@ -12,11 +12,12 @@ namespace AMI.Data.SeedInformation
 {
     public static class UserSeed
     {
-        public static void Seed(ABETContext context)
+        public static ApplicationUser Seed(ABETContext context)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-            CreateUserWithUserNameAndEmail(userManager, "Richard","Molyet", "SYSTEM_USER", "SystemUser@systemUser.com");
+            CreateUserWithUserNameAndEmail(userManager, "SYSTEM","USER", "SYSTEM_USER", "SystemUser@systemUser.com");
+            CreateUserWithUserNameAndEmail(userManager, "Richard", "Molyet", "richard.molyet", "richard.molyet@utoledo.edu");
             CreateUserWithUserNameAndEmail(userManager, "Weng", "Kang", "weng.kang", "weng.kang@utoledo.edu");
             CreateUserWithUserNameAndEmail(userManager, "Jackson", "Carvalho", "jackson.carvalho", "jackson.carvalho@utoledo.edu");
             CreateUserWithUserNameAndEmail(userManager, "Mohsin", "Jamali", "mohsin.jamali", "mohsin.jamali@utoledo.edu");
@@ -34,6 +35,8 @@ namespace AMI.Data.SeedInformation
             CreateUserWithUserNameAndEmail(userManager, "Thomas", "Stuart", "thomas.stuart", "thomas.stuart@utoledo.edu");
             CreateUserWithUserNameAndEmail(userManager, "Daniel", "Georgiev", "daniel.georgiev", "Daniel.Georgiev@utoledo.edu");
             CreateUserWithUserNameAndEmail(userManager, "Vijay", "Devabhaktuni", "vijay.devabhaktuni", "Vijay.Devabhaktuni@utoledo.edu");
+
+            return userManager.FindByName("SYSTEM_USER");
         }
 
         private static bool CreateUserWithUserNameAndEmail(UserManager<ApplicationUser> manager, string firstName, string lastName, string username, string email)

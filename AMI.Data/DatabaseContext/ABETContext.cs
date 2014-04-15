@@ -51,8 +51,9 @@ namespace AMI.Data.DatabaseContext
         {
             protected override void Seed(ABETContext context)
             {
-                UserSeed.Seed(context);
-                CriteriaSeed.Seed(context);
+                var systemUserAccount = UserSeed.Seed(context);
+
+                CriteriaSeed.Seed(context, systemUserAccount);
                 EECS1010Seed.Seed(context);
             }
         }
