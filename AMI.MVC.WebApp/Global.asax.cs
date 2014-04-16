@@ -16,6 +16,7 @@ namespace AMI.MVC.WebApp
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.Configure(BundleTable.Bundles);
+            AutofacConfig.Configure();
         }
     }
 }

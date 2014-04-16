@@ -3,6 +3,7 @@ using AMI.Business.BaseLogic;
 using AMI.Data.DataConnection;
 using AMI.Model;
 using AutoMapper;
+using System.Linq;
 
 namespace AMI.Business.ClassLogic
 {

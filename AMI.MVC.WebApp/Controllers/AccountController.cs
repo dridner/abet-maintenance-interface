@@ -94,7 +94,7 @@ namespace AMI.MVC.WebApp.Controllers
         public virtual ActionResult Logout()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return View();
+            return RedirectToAction("Index", "Home"); 
         }
 	}
 }
