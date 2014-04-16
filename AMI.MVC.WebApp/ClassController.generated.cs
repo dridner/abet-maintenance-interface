@@ -56,6 +56,13 @@ namespace AMI.MVC.WebApp.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> View()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.View);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Delete()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
@@ -77,6 +84,7 @@ namespace AMI.MVC.WebApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+            public readonly string View = "View";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
         }
@@ -84,11 +92,20 @@ namespace AMI.MVC.WebApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+            public const string View = "View";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
         }
 
 
+        static readonly ActionParamsClass_View s_params_View = new ActionParamsClass_View();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_View ViewParams { get { return s_params_View; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_View
+        {
+            public readonly string model = "model";
+        }
         static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
@@ -126,6 +143,18 @@ namespace AMI.MVC.WebApp.Controllers
     public partial class T4MVC_ClassController : AMI.MVC.WebApp.Controllers.ClassController
     {
         public T4MVC_ClassController() : base(Dummy.Instance) { }
+
+        [NonAction]
+        partial void ViewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, AMI.MVC.WebApp.Models.Classes.ClassListModel model);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> View(AMI.MVC.WebApp.Models.Classes.ClassListModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.View);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            ViewOverride(callInfo, model);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
 
         [NonAction]
         partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);

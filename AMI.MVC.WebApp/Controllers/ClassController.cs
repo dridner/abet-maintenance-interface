@@ -6,21 +6,45 @@ using System.Web;
 using System.Web.Mvc;
 using AMI.Business.ClassLogic;
 using AMI.Model;
+using AMI.Model.Filters;
+using AMI.MVC.WebApp.Models.Classes;
 
 namespace AMI.MVC.WebApp.Controllers
 {
     [Authorize]
     public partial class ClassController : AsyncController
     {
+        private GetClassListCommand.Factory _getClassListCommand;
         private SaveClassCommand.Factory _saveClassCommand;
         private GetClassByIdCommand.Factory _getClassByIDCommand;
         private DeleteClassCommand.Factory _deleteClassCommand;
 
-        public ClassController(SaveClassCommand.Factory saveClassCommand, GetClassByIdCommand.Factory getClassByIDCommand, DeleteClassCommand.Factory deleteClassCommand)
+        public ClassController(GetClassListCommand.Factory getClassListCommand, SaveClassCommand.Factory saveClassCommand, GetClassByIdCommand.Factory getClassByIDCommand, DeleteClassCommand.Factory deleteClassCommand)
         {
+            this._getClassListCommand = getClassListCommand;
             this._saveClassCommand = saveClassCommand;
             this._getClassByIDCommand = getClassByIDCommand;
             this._deleteClassCommand = deleteClassCommand;
+        }
+
+        [HttpGet]
+        public virtual async Task<ActionResult> View(ClassListModel model)
+        {
+            ClassFilter filter = new ClassFilter();
+            if (model != null)
+            {
+                filter.Name = model.Name;
+                filter.Number = model.Number;
+                filter.Prefix = model.Prefix;
+            }
+            else
+            {
+                model = new ClassListModel();
+            }
+
+            model.Classes = await this._getClassListCommand(filter).Execute();
+
+            return await View(model);
         }
 
         [HttpGet]
@@ -46,7 +70,7 @@ namespace AMI.MVC.WebApp.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction(MVC5.Home.Index());
             }
         }
 
