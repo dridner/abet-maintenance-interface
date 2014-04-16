@@ -10,9 +10,10 @@ namespace AMI.Model
 {
     public class Outcome : IAuditable
     {
-        [Key, Column(Order = 0)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [ForeignKey("Criteria"), Column(Order = 1)]
+        [ForeignKey("Criteria")]
         public int CriteriaId { get; set; }
         public string Text { get; set; }
 
