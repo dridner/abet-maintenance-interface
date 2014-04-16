@@ -11,7 +11,7 @@
         @Scripts.Render(Links.Scripts.jquery_validate_min_js)
         @Scripts.Render(Links.Scripts.jquery_validate_unobtrusive_min_js)
         @Scripts.Render(Links.Scripts.jquery_unobtrusive_ajax_min_js)
-        @RenderSection("Scripts");
+        @RenderSection("Scripts", required:false)
     </head>
     <body>
         <div id="layoutHeader">
@@ -27,11 +27,6 @@
                 @Html.Partial("_LoginControl")
             </div>
         </div>
-        <nav>
-            <ul>
-                <li>Navigation will go here.</li>
-            </ul>
-        </nav>
         <div id="mainContent">
             @RenderBody()
         </div>

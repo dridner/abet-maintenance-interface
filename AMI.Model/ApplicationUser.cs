@@ -14,5 +14,10 @@ namespace AMI.Model
         public bool IsActive { get; set; }
         public ApplicationUser CreatedByUser { get; set; }
         public DateTime CreatedOn { get; set; }
+
+        public string FullName()
+        {
+            return this.FirstName + " " + this.LastName;
+        }
     }
 }

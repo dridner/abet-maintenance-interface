@@ -2,19 +2,31 @@
 
 <div>
     <div>
-        <div style="text-align:center;">
+        <div style="text-align:center;font-size:larger;">
             @Model.Class.Prefix @Model.Class.Number @Model.Class.Name
         </div>
     </div>
     <hr />
     <div>
-        <h4>Student Learning Objectives</h4>
+        <h4 style="margin-bottom:5px;">Student Learning Objectives</h4>
         <div>
             @for(int i = 0; i < Model.Class.LearningObjectives.Count; i++)
             {
                 AMI.Model.StudentLearningObjective objective = Model.Class.LearningObjectives.ElementAt(i);
                 <div>
-                    <span>@(i+1).</span><span>@objective.Text</span>
+                    <span style="font-weight:bold;">@(i+1). </span><span>@objective.Text</span>
+                </div>
+            }
+        </div>
+    </div>
+    <div>
+        <h4 style="margin-bottom:5px;">Committee Members</h4>
+        <div>
+            @for (int i = 0; i < Model.Class.CommitteeMembers.Count; i++)
+            {
+                AMI.Model.CommitteeMember member = Model.Class.CommitteeMembers.ElementAt(i);
+                <div>
+                    <span>@(member.User.FullName())</span><span> (@member.CommitteeRank.ToString())</span>
                 </div>
             }
         </div>
