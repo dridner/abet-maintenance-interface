@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Autofac;
-using AMI.Business.BaseLogic;
+using AMI.Business.Logic;
 using Autofac.Integration.Mvc;
 using System.Reflection;
 

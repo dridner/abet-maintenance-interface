@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using AMI.Business.UserLogic;
+using AMI.Business.Logic.UserLogic;
 using AMI.Model;
 using AMI.MVC.WebApp.Models.Account;
 using Microsoft.AspNet.Identity;
