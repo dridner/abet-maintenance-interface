@@ -259,6 +259,7 @@
     <Compile Include="Models\Account\RegisterModel.cs" />
     <Compile Include="Models\Classes\ClassListModel.cs" />
     <Compile Include="Models\Public\ClassDetailModel.cs" />
+    <Compile Include="Models\SLO\SLOModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -294,6 +295,7 @@
     <Content Include="Views\Class\ViewAll.cshtml" />
     <Content Include="Views\Public\Index.cshtml" />
     <Content Include="Views\Public\_ClassDetails.cshtml" />
+    <Content Include="Views\SLO\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

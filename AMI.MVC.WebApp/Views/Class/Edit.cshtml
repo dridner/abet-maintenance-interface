@@ -6,6 +6,7 @@
 
 @using (Html.BeginForm(MVC5.Class.ActionNames.Edit, MVC5.Class.Name, FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <div>
         <div>@Html.LabelFor(m => m.Name)</div>
         <div>@Html.TextBoxFor(m => m.Name)</div>
@@ -19,5 +20,26 @@
         <div>@Html.TextBoxFor(m => m.Prefix)</div>
         <div>@Html.ValidationMessageFor(m => m.Prefix)</div>
         <button type="submit">Save</button>
+
     </div>
 }
+
+<table>
+    <tbody></tbody>
+    <tr>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (AMI.Model.StudentLearningObjective slo in Model.LearningObjectives)
+    {
+        <tr>
+            <td>@slo.Text</td>
+            <td>@Html.ActionLink("edit", MVC5.SLO.Edit(Model.Id, slo.Id))|@Html.ActionLink("delete", MVC5.SLO.Delete(Model.Id, slo.Id))
+            </td>
+        </tr>
+    }
+    <tr>
+        <td style="text-align:center;">&#60;<b>Create New</b>&#62;</td>
+        <td>@Html.ActionLink("create", MVC5.SLO.Edit(Model.Id, 0))</td>
+    </tr>
+</table>

@@ -61,6 +61,13 @@ namespace AMI.MVC.WebApp.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Delete()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public SLOController Actions { get { return MVC5.SLO; } }
@@ -78,12 +85,14 @@ namespace AMI.MVC.WebApp.Controllers
         public class ActionNamesClass
         {
             public readonly string Edit = "Edit";
+            public readonly string Delete = "Delete";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Edit = "Edit";
+            public const string Delete = "Delete";
         }
 
 
@@ -97,6 +106,15 @@ namespace AMI.MVC.WebApp.Controllers
             public readonly string SLOID = "SLOID";
             public readonly string slo = "slo";
         }
+        static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Delete
+        {
+            public readonly string classID = "classID";
+            public readonly string SLOid = "SLOid";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -107,7 +125,9 @@ namespace AMI.MVC.WebApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Edit = "Edit";
             }
+            public readonly string Edit = "~/Views/SLO/Edit.cshtml";
         }
     }
 
@@ -130,14 +150,27 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, AMI.Model.StudentLearningObjective slo);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, AMI.MVC.WebApp.Models.SLO.SLOModel slo);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit(AMI.Model.StudentLearningObjective slo)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit(AMI.MVC.WebApp.Models.SLO.SLOModel slo)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "slo", slo);
             EditOverride(callInfo, slo);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int classID, int SLOid);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Delete(int classID, int SLOid)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "classID", classID);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "SLOid", SLOid);
+            DeleteOverride(callInfo, classID, SLOid);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 
