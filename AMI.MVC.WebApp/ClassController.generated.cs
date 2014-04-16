@@ -56,9 +56,9 @@ namespace AMI.MVC.WebApp.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> View()
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ViewAll()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.View);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ViewAll);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
         [NonAction]
@@ -84,7 +84,7 @@ namespace AMI.MVC.WebApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string View = "View";
+            public readonly string ViewAll = "ViewAll";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
         }
@@ -92,17 +92,17 @@ namespace AMI.MVC.WebApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string View = "View";
+            public const string ViewAll = "ViewAll";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
         }
 
 
-        static readonly ActionParamsClass_View s_params_View = new ActionParamsClass_View();
+        static readonly ActionParamsClass_ViewAll s_params_ViewAll = new ActionParamsClass_ViewAll();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_View ViewParams { get { return s_params_View; } }
+        public ActionParamsClass_ViewAll ViewAllParams { get { return s_params_ViewAll; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_View
+        public class ActionParamsClass_ViewAll
         {
             public readonly string model = "model";
         }
@@ -134,8 +134,10 @@ namespace AMI.MVC.WebApp.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Edit = "Edit";
+                public readonly string ViewAll = "ViewAll";
             }
             public readonly string Edit = "~/Views/Class/Edit.cshtml";
+            public readonly string ViewAll = "~/Views/Class/ViewAll.cshtml";
         }
     }
 
@@ -145,14 +147,14 @@ namespace AMI.MVC.WebApp.Controllers
         public T4MVC_ClassController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void ViewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, AMI.MVC.WebApp.Models.Classes.ClassListModel model);
+        partial void ViewAllOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, AMI.MVC.WebApp.Models.Classes.ClassListModel model);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> View(AMI.MVC.WebApp.Models.Classes.ClassListModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ViewAll(AMI.MVC.WebApp.Models.Classes.ClassListModel model)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.View);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ViewAll);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            ViewOverride(callInfo, model);
+            ViewAllOverride(callInfo, model);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 

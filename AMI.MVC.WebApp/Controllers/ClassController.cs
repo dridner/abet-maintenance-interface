@@ -28,7 +28,7 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [HttpGet]
-        public virtual async Task<ActionResult> View(ClassListModel model)
+        public virtual async Task<ActionResult> ViewAll(ClassListModel model)
         {
             ClassFilter filter = new ClassFilter();
             if (model != null)
@@ -42,9 +42,10 @@ namespace AMI.MVC.WebApp.Controllers
                 model = new ClassListModel();
             }
 
-            model.Classes = await this._getClassListCommand(filter).Execute();
+            List<Class> classes = await this._getClassListCommand(filter).Execute();
+            model.Classes = classes ?? new List<Class>();
 
-            return await View(model);
+            return View(model);
         }
 
         [HttpGet]

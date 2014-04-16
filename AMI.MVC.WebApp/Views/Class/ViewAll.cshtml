@@ -7,15 +7,15 @@
 <h2>View</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Edit")
 </p>
 
-@using (Html.BeginForm(MVC5.Class.ActionNames.View, MVC5.Class.Name, FormMethod.Post))
+@using (Html.BeginForm(MVC5.Class.ActionNames.ViewAll, MVC5.Class.Name, FormMethod.Get))
 {
     <div>
-        <div>@Html.TextBoxFor(m => m.Name)</div>
-        <div>@Html.TextBoxFor(m => m.Number)</div>
-        <div>@Html.TextBoxFor(m => m.Prefix)</div>
+        Name <div>@Html.TextBoxFor(m => m.Name)</div>
+        Number <div>@Html.TextBoxFor(m => m.Number)</div>
+        Prefix <div>@Html.TextBoxFor(m => m.Prefix)</div>
         <button type="submit">Search</button>
     </div>
 }

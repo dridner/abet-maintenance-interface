@@ -220,7 +220,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
-    <Content Include="Views\Class\View.cshtml" />
+    <Content Include="Views\Class\ViewAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

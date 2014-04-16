@@ -37,7 +37,7 @@ namespace AMI.Business.Logic.ClassLogic
                 classes = classes.Where(c =>c.Number.Contains(this._filter.Number));
             }
 
-            return await (classes as DbSet<Class>).ToListAsync();
+            return await classes.ToListAsync();
         }
     }
 }
