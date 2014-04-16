@@ -54,6 +54,13 @@ namespace AMI.MVC.WebApp.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ClassDetails()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ClassDetails);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public PublicController Actions { get { return MVC5.Public; } }
@@ -71,15 +78,25 @@ namespace AMI.MVC.WebApp.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string ClassDetails = "ClassDetails";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string ClassDetails = "ClassDetails";
         }
 
 
+        static readonly ActionParamsClass_ClassDetails s_params_ClassDetails = new ActionParamsClass_ClassDetails();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ClassDetails ClassDetailsParams { get { return s_params_ClassDetails; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ClassDetails
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -90,8 +107,10 @@ namespace AMI.MVC.WebApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _ClassDetails = "_ClassDetails";
                 public readonly string Index = "Index";
             }
+            public readonly string _ClassDetails = "~/Views/Public/_ClassDetails.cshtml";
             public readonly string Index = "~/Views/Public/Index.cshtml";
         }
     }
@@ -109,6 +128,18 @@ namespace AMI.MVC.WebApp.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void ClassDetailsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ClassDetails(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ClassDetails);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ClassDetailsOverride(callInfo, id);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 

@@ -84,6 +84,7 @@
     <Compile Include="Logic\AsyncCommandBase.cs" />
     <Compile Include="Logic\AsyncDBCommandBase.cs" />
     <Compile Include="Logic\AsyncTransactionalDBCommandBase.cs" />
+    <Compile Include="Logic\CriteriaLogic\GetCriteriaListCommand.cs" />
     <Compile Include="Logic\IAsyncCommand.cs" />
     <Compile Include="Logic\IAsyncDBCommand.cs" />
     <Compile Include="Logic\ClassLogic\CreateClassHistoryCommand.cs" />

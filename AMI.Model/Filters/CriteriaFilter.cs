@@ -8,7 +8,7 @@ namespace AMI.Model.Filters
 {
     public class CriteriaFilter
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; }
     }
 }
