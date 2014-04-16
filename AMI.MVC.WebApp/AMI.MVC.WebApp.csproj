@@ -192,6 +192,7 @@
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
     <Compile Include="Models\Classes\ClassListModel.cs" />
+    <Compile Include="Models\SLO\SLOModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -232,7 +233,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Public\" />
     <Folder Include="Views\SLO\" />
   </ItemGroup>
   <ItemGroup>
