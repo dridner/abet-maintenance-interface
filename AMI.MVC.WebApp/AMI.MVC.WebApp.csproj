@@ -297,6 +297,7 @@
     <Content Include="Views\Public\Index.cshtml" />
     <Content Include="Views\Public\_ClassDetails.cshtml" />
     <Content Include="Views\SLO\Edit.cshtml" />
+    <Content Include="Views\SLO\AddOutcomeToSLO.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -306,7 +307,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SLO\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AMI.Business\AMI.Business.csproj">

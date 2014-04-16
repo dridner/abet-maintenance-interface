@@ -1,0 +1,37 @@
+﻿@model AMI.MVC.WebApp.Models.SLO.OutcomeToSloModel
+
+@{
+    ViewBag.Title = "Add Outcome To Student Learning Obejctive";
+}
+
+<h2>Add Outcome To Student Learning Obejctive</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "#")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Description
+        </th>
+        <th>Add</th>
+    </tr>
+
+@foreach (var item in Model.AllOutcomes)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.ActionLink("+", MVC5.SLO.AddOutcomeToSLO(Model.SLOID, item.Id))
+        </td>
+    </tr>
+}
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

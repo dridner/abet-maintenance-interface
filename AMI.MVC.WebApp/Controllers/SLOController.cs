@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AMI.Business.Logic.ClassLogic;
+using AMI.Business.Logic.CriteriaLogic;
 using AMI.Business.Logic.OutcomeLogic;
 using AMI.Business.Logic.StudentLearningObjectiveLogic;
 using AMI.Model;
+using AMI.Model.Filters;
 using AMI.MVC.WebApp.Models.SLO;
 
 namespace AMI.MVC.WebApp.Controllers
@@ -19,18 +21,21 @@ namespace AMI.MVC.WebApp.Controllers
         private GetOutcomeByIDCommand.Factory _getOutcomeByIDCommand;
         private SaveStudentLearningObjectiveCommand.Factory _saveSLOCommand;
         private DeleteStudentLearningObjectiveCommand.Factory _deleteSLOCommand;
+        private GetCriteriaListCommand.Factory _getCriteriaCommand;
 
         public SLOController(GetStudentLearningObjectiveByIDCommand.Factory getSLOByIDCommand,
             GetClassByIdCommand.Factory getClassByIDCommand,
             GetOutcomeByIDCommand.Factory getOutcomeByIDCommand,
             SaveStudentLearningObjectiveCommand.Factory saveSLOCommand,
-            DeleteStudentLearningObjectiveCommand.Factory deleteSLOCommand)
+            DeleteStudentLearningObjectiveCommand.Factory deleteSLOCommand,
+            GetCriteriaListCommand.Factory getCriteriaCommand)
         {
             this._getSLOByIDCommand = getSLOByIDCommand;
             this._getClassByIDCommand = getClassByIDCommand;
             this._getOutcomeByIDCommand = getOutcomeByIDCommand;
             this._saveSLOCommand = saveSLOCommand;
             this._deleteSLOCommand = deleteSLOCommand;
+            this._getCriteriaCommand = getCriteriaCommand;
         }
 
         [HttpGet]
@@ -43,7 +48,7 @@ namespace AMI.MVC.WebApp.Controllers
             if (slo != null)
             {
                 model.ID = slo.Id;
-                model.SupportedOutcomeIDs = slo.SupportedOutcomes.Select(s => s.Id).ToList();
+                model.SupportedOutcomes = slo.SupportedOutcomes.ToList();
                 model.Text = slo.Text;
             }
 
@@ -75,9 +80,31 @@ namespace AMI.MVC.WebApp.Controllers
         {
             var sloToUpdate = await this._getSLOByIDCommand(sloID).Execute();
             OutcomeToSloModel model = new OutcomeToSloModel { SLOID = sloID };
-            model.AllOutcomes = null;
+            model.AllOutcomes = new List<Outcome>();
+            var criterion = await this._getCriteriaCommand(new CriteriaFilter()).Execute();
+            foreach (var criteria in criterion)
+            {
+                model.AllOutcomes.AddRange(criteria.Outcomes.ToList());
+            }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public virtual async Task<ActionResult> AddOutcomeToSLO(int sloID, int outcomeID)
+        {
+            //TODO finish
+            return RedirectToAction(MVC5.SLO.Edit(sloID));
+        }
+
+        [HttpGet]
+        public virtual async Task<ActionResult> RemoveOutcomeFromSLO(int sloID, int ocID)
+        {
+            var sloToUpdate = await this._getSLOByIDCommand(sloID).Execute();
+            sloToUpdate.SupportedOutcomes.Remove(sloToUpdate.SupportedOutcomes.Single(o => o.Id == ocID));
+            await this._saveSLOCommand(sloToUpdate).Execute();
+
+            return RedirectToAction(MVC5.SLO.Edit(sloToUpdate.Class.Id, sloID));
         }
         
         [HttpGet]

@@ -20,7 +20,7 @@ namespace AMI.Business.Logic.StudentLearningObjectiveLogic
 
         internal override async Task<StudentLearningObjective> Execute(IDBConnection conn)
         {
-            return await conn.ABETContext.StudentLearningObjectives.Include(slo => slo.SupportedOutcomes).SingleAsync(s => s.Id == this._id);
+            return await conn.ABETContext.StudentLearningObjectives.Include(slo => slo.SupportedOutcomes).Include(s => s.Class).SingleAsync(s => s.Id == this._id);
         }
     }
 }
