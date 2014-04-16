@@ -56,6 +56,7 @@
     <Compile Include="ClassHistory.cs" />
     <Compile Include="CommitteeMember.cs" />
     <Compile Include="CommitteeMemberHistory.cs" />
+    <Compile Include="Filters\ClassFilter.cs" />
     <Compile Include="IAuditable.cs" />
     <Compile Include="Outcome.cs" />
     <Compile Include="OutcomeHistory.cs" />

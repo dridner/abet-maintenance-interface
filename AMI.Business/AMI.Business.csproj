@@ -89,6 +89,7 @@
     <Compile Include="ClassLogic\CreateClassHistoryCommand.cs" />
     <Compile Include="ClassLogic\DeleteClassCommand.cs" />
     <Compile Include="ClassLogic\GetClassByIdCommand.cs" />
+    <Compile Include="ClassLogic\GetClassListCommand.cs" />
     <Compile Include="ClassLogic\SaveClassCommand.cs" />
     <Compile Include="CommitteeMemberLogic\CreateCommitteeMemberHistoryCommand.cs" />
     <Compile Include="CommitteeMemberLogic\DeleteCommitteeMemberCommand.cs" />
