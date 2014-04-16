@@ -34,6 +34,7 @@ namespace AMI.Data.SeedInformation
             CreateUserWithUserNameAndEmail(userManager, "Daniel", "Georgiev", "daniel.georgiev", "Daniel.Georgiev@utoledo.edu");
             CreateUserWithUserNameAndEmail(userManager, "Vijay", "Devabhaktuni", "vijay.devabhaktuni", "Vijay.Devabhaktuni@utoledo.edu");
             CreateUserWithUserNameAndEmail(userManager, "Krishna", "Shenai", "krishna.shenai", "krishna.shenai@utoledo.edu");
+            CreateUserWithUserNameAndEmail(userManager, "Henry", "Ledgard", "henry.ledgard", "henry.ledgard@utoledo.edu");
 
             return userManager.FindByName("SYSTEM_USER");
         }

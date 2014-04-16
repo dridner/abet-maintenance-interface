@@ -10,11 +10,6 @@ namespace AMI.Model
 {
     public class Outcome : IAuditable
     {
-        public Outcome()
-        {
-            
-        }
-
         [Key, Column(Order = 0)]
         public int Id { get; set; }
         [ForeignKey("Criteria"), Column(Order = 1)]
@@ -26,5 +21,6 @@ namespace AMI.Model
         public DateTime CreatedOn { get; set; }
 
         public virtual Criteria Criteria { get; set; }
+        public virtual ICollection<StudentLearningObjective> SupportedLearningObjectives { get; set; }
     }
 }

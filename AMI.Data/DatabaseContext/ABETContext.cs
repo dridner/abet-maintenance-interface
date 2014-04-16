@@ -36,9 +36,6 @@ namespace AMI.Data.DatabaseContext
         public DbSet<CommitteeMember> CommitteeMembers { get; set; }
         public DbSet<CommitteeMemberHistory> CommitteeMemberHistory { get; set; }
 
-        public DbSet<SLOSupportsOutcome> SLOSupportsOutcomes { get; set; }
-        public DbSet<SLOSupportsOutcomeHistory> SLOSupportsOutcomeHistory { get; set; }
-
         public DbSet<Criteria> Criterias { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -59,7 +56,15 @@ namespace AMI.Data.DatabaseContext
                 var systemUserAccount = UserSeed.Seed(userManager, context);
 
                 CriteriaSeed.Seed(context, systemUserAccount);
-                ClassSeed.Seed(context, systemUserAccount, userManager);
+                
+                EECS1010Seed.Seed(context, systemUserAccount, userManager);
+                EECS1100Seed.Seed(context, systemUserAccount, userManager);
+                EECS1530Seed.Seed(context, systemUserAccount, userManager);
+                EECS1560Seed.Seed(context, systemUserAccount, userManager);
+                EECS1570Seed.Seed(context, systemUserAccount, userManager);
+                EECS1580Seed.Seed(context, systemUserAccount, userManager);
+                EECS1590Seed.Seed(context, systemUserAccount, userManager);
+                EECS2000Seed.Seed(context, systemUserAccount, userManager);
             }
         }
     }
