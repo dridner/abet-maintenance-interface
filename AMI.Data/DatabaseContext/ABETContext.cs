@@ -36,6 +36,9 @@ namespace AMI.Data.DatabaseContext
         public DbSet<CommitteeMember> CommitteeMembers { get; set; }
         public DbSet<CommitteeMemberHistory> CommitteeMemberHistory { get; set; }
 
+        public DbSet<SLOSupportsOutcome> SLOSupportsOutcomes { get; set; }
+        public DbSet<SLOSupportsOutcomeHistory> SLOSupportsOutcomeHistory { get; set; }
+
         public DbSet<Criteria> Criterias { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
