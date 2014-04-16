@@ -12,6 +12,7 @@
 
 @using (Html.BeginForm(MVC5.Class.ActionNames.ViewAll, MVC5.Class.Name, FormMethod.Get))
 {
+    @Html.AntiForgeryToken()
     <div>
         Name <div>@Html.TextBoxFor(m => m.Name)</div>
         Number <div>@Html.TextBoxFor(m => m.Number)</div>

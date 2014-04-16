@@ -3,6 +3,7 @@ using AMI.Business.Logic;
 using AMI.Data.DataConnection;
 using AMI.Model;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace AMI.Business.Logic.ClassLogic
 {
@@ -19,7 +20,7 @@ namespace AMI.Business.Logic.ClassLogic
 
         internal override async Task<Class> Execute(IDBConnection conn)
         {
-            return await conn.ABETContext.Classes.FindAsync(this._id);
+            return await conn.ABETContext.Classes.Include(c => c.LearningObjectives).SingleAsync(c => c.Id == this._id);
         }
     }
 }

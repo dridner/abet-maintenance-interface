@@ -12,7 +12,7 @@ using AMI.MVC.WebApp.Models.SLO;
 
 namespace AMI.MVC.WebApp.Controllers
 {
-    public class SLOController : Controller
+    public partial class SLOController : Controller
     {
         private GetStudentLearningObjectiveByIDCommand.Factory _getSLOByIDCommand;
         private GetClassByIdCommand.Factory _getClassByIDCommand;
@@ -34,7 +34,7 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Edit(int ClassID, int SLOID = 0)
+        public virtual async Task<ActionResult> Edit(int ClassID, int SLOID = 0)
         {
             SLOModel model = new SLOModel();
             model.ClassID = ClassID;
@@ -51,7 +51,7 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(SLOModel slo)
+        public virtual async Task<ActionResult> Edit(SLOModel slo)
         {
             var sloToUpdate = await this._getSLOByIDCommand(slo.ID).Execute();
             if (sloToUpdate != null)
@@ -72,6 +72,13 @@ namespace AMI.MVC.WebApp.Controllers
             await this._saveSLOCommand(sloToUpdate).Execute();
 
             return RedirectToAction(MVC5.Home.ActionNames.Index, MVC5.Home.Name);
+        }
+        
+        [HttpGet]
+        public virtual async Task<ActionResult> Delete(int classID, int SLOid)
+        {
+            await this._deleteSLOCommand(SLOid).Execute();
+            return RedirectToAction(MVC5.Class.Edit(classID));
         }
     }
 }

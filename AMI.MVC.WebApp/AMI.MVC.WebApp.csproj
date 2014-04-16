@@ -200,6 +200,9 @@
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="SLOController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -224,6 +227,7 @@
     </None>
     <Content Include="Views\Class\ViewAll.cshtml" />
     <Content Include="Views\Public\Index.cshtml" />
+    <Content Include="Views\SLO\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,7 +237,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SLO\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AMI.Business\AMI.Business.csproj">

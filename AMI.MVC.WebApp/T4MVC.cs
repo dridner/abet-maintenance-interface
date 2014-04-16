@@ -29,6 +29,7 @@ public static partial class MVC5
     public static AMI.MVC.WebApp.Controllers.ClassController Class = new AMI.MVC.WebApp.Controllers.T4MVC_ClassController();
     public static AMI.MVC.WebApp.Controllers.HomeController Home = new AMI.MVC.WebApp.Controllers.T4MVC_HomeController();
     public static AMI.MVC.WebApp.Controllers.PublicController Public = new AMI.MVC.WebApp.Controllers.T4MVC_PublicController();
+    public static AMI.MVC.WebApp.Controllers.SLOController SLO = new AMI.MVC.WebApp.Controllers.T4MVC_SLOController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

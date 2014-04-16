@@ -82,7 +82,7 @@ namespace AMI.MVC.WebApp.Controllers
         public virtual async Task<ActionResult> Delete(int id)
         {
             await this._deleteClassCommand(id).Execute();
-            return RedirectToAction(MVC5.Home.Index());
+            return RedirectToAction(MVC5.Class.ViewAll());
         }
     }
 }
