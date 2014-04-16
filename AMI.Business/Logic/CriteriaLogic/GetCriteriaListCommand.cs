@@ -38,7 +38,7 @@ namespace AMI.Business.Logic.CriteriaLogic
                 }
             }
 
-            return await queryable.ToListAsync();
+            return await queryable.Include(c => c.Outcomes).ToListAsync();
         }
     }
 }

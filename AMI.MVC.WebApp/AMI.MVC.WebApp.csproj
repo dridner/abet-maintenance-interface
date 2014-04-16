@@ -275,6 +275,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SLO\OutcomeToSloModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -296,6 +297,7 @@
     <Content Include="Views\Public\Index.cshtml" />
     <Content Include="Views\Public\_ClassDetails.cshtml" />
     <Content Include="Views\SLO\Edit.cshtml" />
+    <Content Include="Views\SLO\AddOutcomeToSLO.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

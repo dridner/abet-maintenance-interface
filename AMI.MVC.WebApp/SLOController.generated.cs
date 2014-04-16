@@ -63,6 +63,20 @@ namespace AMI.MVC.WebApp.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> AddOutcomeToSLO()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddOutcomeToSLO);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> RemoveOutcomeFromSLO()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveOutcomeFromSLO);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Delete()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
@@ -85,6 +99,8 @@ namespace AMI.MVC.WebApp.Controllers
         public class ActionNamesClass
         {
             public readonly string Edit = "Edit";
+            public readonly string AddOutcomeToSLO = "AddOutcomeToSLO";
+            public readonly string RemoveOutcomeFromSLO = "RemoveOutcomeFromSLO";
             public readonly string Delete = "Delete";
         }
 
@@ -92,6 +108,8 @@ namespace AMI.MVC.WebApp.Controllers
         public class ActionNameConstants
         {
             public const string Edit = "Edit";
+            public const string AddOutcomeToSLO = "AddOutcomeToSLO";
+            public const string RemoveOutcomeFromSLO = "RemoveOutcomeFromSLO";
             public const string Delete = "Delete";
         }
 
@@ -105,6 +123,24 @@ namespace AMI.MVC.WebApp.Controllers
             public readonly string ClassID = "ClassID";
             public readonly string SLOID = "SLOID";
             public readonly string slo = "slo";
+        }
+        static readonly ActionParamsClass_AddOutcomeToSLO s_params_AddOutcomeToSLO = new ActionParamsClass_AddOutcomeToSLO();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddOutcomeToSLO AddOutcomeToSLOParams { get { return s_params_AddOutcomeToSLO; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddOutcomeToSLO
+        {
+            public readonly string sloID = "sloID";
+            public readonly string outcomeID = "outcomeID";
+        }
+        static readonly ActionParamsClass_RemoveOutcomeFromSLO s_params_RemoveOutcomeFromSLO = new ActionParamsClass_RemoveOutcomeFromSLO();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_RemoveOutcomeFromSLO RemoveOutcomeFromSLOParams { get { return s_params_RemoveOutcomeFromSLO; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_RemoveOutcomeFromSLO
+        {
+            public readonly string sloID = "sloID";
+            public readonly string ocID = "ocID";
         }
         static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -125,8 +161,10 @@ namespace AMI.MVC.WebApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string AddOutcomeToSLO = "AddOutcomeToSLO";
                 public readonly string Edit = "Edit";
             }
+            public readonly string AddOutcomeToSLO = "~/Views/SLO/AddOutcomeToSLO.cshtml";
             public readonly string Edit = "~/Views/SLO/Edit.cshtml";
         }
     }
@@ -158,6 +196,44 @@ namespace AMI.MVC.WebApp.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "slo", slo);
             EditOverride(callInfo, slo);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void AddOutcomeToSLOOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int sloID);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> AddOutcomeToSLO(int sloID)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddOutcomeToSLO);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sloID", sloID);
+            AddOutcomeToSLOOverride(callInfo, sloID);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void RemoveOutcomeFromSLOOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int sloID, int ocID);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> RemoveOutcomeFromSLO(int sloID, int ocID)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveOutcomeFromSLO);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sloID", sloID);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "ocID", ocID);
+            RemoveOutcomeFromSLOOverride(callInfo, sloID, ocID);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void AddOutcomeToSLOOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int sloID, int outcomeID);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> AddOutcomeToSLO(int sloID, int outcomeID)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddOutcomeToSLO);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sloID", sloID);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "outcomeID", outcomeID);
+            AddOutcomeToSLOOverride(callInfo, sloID, outcomeID);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 

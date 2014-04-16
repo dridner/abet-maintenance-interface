@@ -35,6 +35,26 @@
     </div>
 }
 
+<table>
+    <tbody></tbody>
+    <tr>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (AMI.Model.Outcome oc in Model.SupportedOutcomes)
+    {
+        <tr>
+            <td>@oc.Text</td>
+            <td>@Html.ActionLink("remove", MVC5.SLO.RemoveOutcomeFromSLO(Model.ID, oc.Id))
+            </td>
+        </tr>
+    }
+    <tr>
+        <td style="text-align:center;">&#60;<b>Add New</b>&#62;</td>
+        <td>@Html.ActionLink("Add_New", MVC5.SLO.AddOutcomeToSLO(Model.ID))</td>
+    </tr>
+</table>
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
