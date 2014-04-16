@@ -82,6 +82,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeedInformation\ClassSeed.cs" />
     <Compile Include="SeedInformation\CriteriaSeed.cs" />
+    <Compile Include="SeedInformation\EECS1010Seed.cs" />
+    <Compile Include="SeedInformation\EECS1100Seed.cs" />
+    <Compile Include="SeedInformation\EECS1530Seed.cs" />
+    <Compile Include="SeedInformation\EECS1560Seed.cs" />
+    <Compile Include="SeedInformation\EECS1570Seed.cs" />
+    <Compile Include="SeedInformation\EECS1580Seed.cs" />
+    <Compile Include="SeedInformation\EECS1590Seed.cs" />
+    <Compile Include="SeedInformation\EECS2000Seed.cs" />
+    <Compile Include="SeedInformation\EECS2100Seed.cs" />
     <Compile Include="SeedInformation\UserSeed.cs" />
   </ItemGroup>
   <ItemGroup>

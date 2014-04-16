@@ -62,8 +62,6 @@
     <Compile Include="OutcomeHistory.cs" />
     <Compile Include="Criteria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SLOSupportsOutcome.cs" />
-    <Compile Include="SLOSupportsOutcomeHistory.cs" />
     <Compile Include="StudentLearningObjective.cs" />
     <Compile Include="StudentLearningObjectiveHistory.cs" />
     <Compile Include="ApplicationUser.cs" />

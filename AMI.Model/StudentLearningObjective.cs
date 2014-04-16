@@ -19,5 +19,7 @@ namespace AMI.Model
         public bool IsActive { get; set; }
         public virtual ApplicationUser CreatedByUser { get; set; }
         public DateTime CreatedOn { get; set; }
+
+        public virtual ICollection<Outcome> SupportedOutcomes { get; set; }
     }
 }
