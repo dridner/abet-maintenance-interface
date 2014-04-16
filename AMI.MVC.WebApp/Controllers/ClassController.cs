@@ -19,7 +19,10 @@ namespace AMI.MVC.WebApp.Controllers
         private GetClassByIdCommand.Factory _getClassByIDCommand;
         private DeleteClassCommand.Factory _deleteClassCommand;
 
-        public ClassController(GetClassListCommand.Factory getClassListCommand, SaveClassCommand.Factory saveClassCommand, GetClassByIdCommand.Factory getClassByIDCommand, DeleteClassCommand.Factory deleteClassCommand)
+        public ClassController(GetClassListCommand.Factory getClassListCommand, 
+            SaveClassCommand.Factory saveClassCommand, 
+            GetClassByIdCommand.Factory getClassByIDCommand, 
+            DeleteClassCommand.Factory deleteClassCommand)
         {
             this._getClassListCommand = getClassListCommand;
             this._saveClassCommand = saveClassCommand;

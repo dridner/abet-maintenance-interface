@@ -182,6 +182,7 @@
     <Compile Include="Controllers\ClassController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PublicController.cs" />
+    <Compile Include="Controllers\SLOController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +232,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Public\" />
+    <Folder Include="Views\SLO\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AMI.Business\AMI.Business.csproj">

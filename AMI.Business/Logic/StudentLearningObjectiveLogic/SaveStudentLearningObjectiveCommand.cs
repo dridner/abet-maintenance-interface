@@ -12,7 +12,7 @@ namespace AMI.Business.Logic.StudentLearningObjectiveLogic
         private CreateStudentLearningObjectiveHistoryCommand.Factory _createHistoryCommand;
         private GetStudentLearningObjectiveByIDCommand.Factory _getByIDCommand;
 
-        public delegate SaveStudentLearningObjectiveCommand Factory(Outcome modelToSave);
+        public delegate SaveStudentLearningObjectiveCommand Factory(StudentLearningObjective modelToSave);
 
         public SaveStudentLearningObjectiveCommand(StudentLearningObjective modelToSave, CreateStudentLearningObjectiveHistoryCommand.Factory createHistory, GetStudentLearningObjectiveByIDCommand.Factory getByIDCommand)
         {
