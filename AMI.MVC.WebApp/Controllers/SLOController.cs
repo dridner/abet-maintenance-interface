@@ -62,16 +62,22 @@ namespace AMI.MVC.WebApp.Controllers
             {
                 sloToUpdate = new StudentLearningObjective();
                 sloToUpdate.Class = await this._getClassByIDCommand(slo.ClassID).Execute();
-                foreach (int id in slo.SupportedOutcomeIDs)
-                {
-                    sloToUpdate.SupportedOutcomes.Add(await this._getOutcomeByIDCommand(id).Execute());
-                }
                 sloToUpdate.CreatedOn = DateTime.UtcNow;
             }
 
             await this._saveSLOCommand(sloToUpdate).Execute();
 
             return RedirectToAction(MVC5.Home.ActionNames.Index, MVC5.Home.Name);
+        }
+
+        [HttpGet]
+        public virtual async Task<ActionResult> AddOutcomeToSLO(int sloID)
+        {
+            var sloToUpdate = await this._getSLOByIDCommand(sloID).Execute();
+            OutcomeToSloModel model = new OutcomeToSloModel { SLOID = sloID };
+            model.AllOutcomes = null;
+
+            return View(model);
         }
         
         [HttpGet]

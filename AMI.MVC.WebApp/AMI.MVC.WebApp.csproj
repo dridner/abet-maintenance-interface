@@ -208,6 +208,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SLO\OutcomeToSloModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
