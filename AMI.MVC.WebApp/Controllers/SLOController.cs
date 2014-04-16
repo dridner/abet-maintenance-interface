@@ -10,7 +10,7 @@ using AMI.Model;
 
 namespace AMI.MVC.WebApp.Controllers
 {
-    public class SLOController : Controller
+    public partial class SLOController : Controller
     {
         private GetStudentLearningObjectiveByIDCommand.Factory _getSLOByIDCommand;
         private GetClassByIdCommand.Factory _getClassByIDCommand;
@@ -29,14 +29,14 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Edit(int ClassID, int SLOID = 0)
+        public virtual async Task<ActionResult> Edit(int ClassID, int SLOID = 0)
         {
 
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(StudentLearningObjective slo)
+        public virtual async Task<ActionResult> Edit(StudentLearningObjective slo)
         {
             var sloToUpdate = await this._getSLOByIDCommand(slo.Id).Execute();
             if (sloToUpdate != null)

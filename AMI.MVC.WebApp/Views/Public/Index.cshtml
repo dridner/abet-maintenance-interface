@@ -1,4 +1,25 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model IEnumerable<AMI.Model.Class>
+
+@{
+    ViewBag.Title = "Index";
 }
 
+@if (false)
+{
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+}
+
+<p>
+    Click a class to see the current SLO/Outcome support for that class.
+</p>
+<div style="display:inline-block;">
+    @foreach (AMI.Model.Class item in Model)
+    {
+        <div>
+            @Ajax.ActionLink(item.Prefix + " " + item.Number, MVC5.Public.ClassDetails(item.Id), new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "classDetailContent" })
+        </div>
+    }
+</div>
+<div id="classDetailContent" style="display:inline-block;vertical-align:top;margin-left:20px;width:75%;">
+    
+</div>

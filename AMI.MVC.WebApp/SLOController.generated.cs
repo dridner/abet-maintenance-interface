@@ -23,10 +23,10 @@ using System.Web.Routing;
 using T4MVC;
 namespace AMI.MVC.WebApp.Controllers
 {
-    public partial class PublicController
+    public partial class SLOController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected PublicController(Dummy d) { }
+        protected SLOController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -56,20 +56,20 @@ namespace AMI.MVC.WebApp.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ClassDetails()
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ClassDetails);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public PublicController Actions { get { return MVC5.Public; } }
+        public SLOController Actions { get { return MVC5.SLO; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Public";
+        public readonly string Name = "SLO";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Public";
+        public const string NameConst = "SLO";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -77,25 +77,25 @@ namespace AMI.MVC.WebApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = "Index";
-            public readonly string ClassDetails = "ClassDetails";
+            public readonly string Edit = "Edit";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Index = "Index";
-            public const string ClassDetails = "ClassDetails";
+            public const string Edit = "Edit";
         }
 
 
-        static readonly ActionParamsClass_ClassDetails s_params_ClassDetails = new ActionParamsClass_ClassDetails();
+        static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_ClassDetails ClassDetailsParams { get { return s_params_ClassDetails; } }
+        public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_ClassDetails
+        public class ActionParamsClass_Edit
         {
-            public readonly string id = "id";
+            public readonly string ClassID = "ClassID";
+            public readonly string SLOID = "SLOID";
+            public readonly string slo = "slo";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -107,39 +107,37 @@ namespace AMI.MVC.WebApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _ClassDetails = "_ClassDetails";
-                public readonly string Index = "Index";
             }
-            public readonly string _ClassDetails = "~/Views/Public/_ClassDetails.cshtml";
-            public readonly string Index = "~/Views/Public/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_PublicController : AMI.MVC.WebApp.Controllers.PublicController
+    public partial class T4MVC_SLOController : AMI.MVC.WebApp.Controllers.SLOController
     {
-        public T4MVC_PublicController() : base(Dummy.Instance) { }
+        public T4MVC_SLOController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int ClassID, int SLOID);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index()
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit(int ClassID, int SLOID)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            IndexOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "ClassID", ClassID);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "SLOID", SLOID);
+            EditOverride(callInfo, ClassID, SLOID);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 
         [NonAction]
-        partial void ClassDetailsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, AMI.Model.StudentLearningObjective slo);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ClassDetails(int id)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit(AMI.Model.StudentLearningObjective slo)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ClassDetails);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            ClassDetailsOverride(callInfo, id);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "slo", slo);
+            EditOverride(callInfo, slo);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 
