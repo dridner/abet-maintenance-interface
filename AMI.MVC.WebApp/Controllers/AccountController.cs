@@ -15,9 +15,18 @@ namespace AMI.MVC.WebApp.Controllers
     [Authorize]
     public partial class AccountController : Controller
     {
+        private IsUserAllowedToRegisterCommand.Factory _isAllowedToRegisterCommand;
+        private SendEmailForRegisteringUserCommand.Factory _sendEmailForRegisteringUserCommand;
+
         #region Properties
         public IAuthenticationManager AuthenticationManager { get { return HttpContext.GetOwinContext().Authentication; } }
         #endregion
+
+        public AccountController(IsUserAllowedToRegisterCommand.Factory isAllowedToRegisterCommand, SendEmailForRegisteringUserCommand.Factory sendEmailForRegisteringUserCommand)
+        {
+            this._isAllowedToRegisterCommand = isAllowedToRegisterCommand;
+            this._sendEmailForRegisteringUserCommand = sendEmailForRegisteringUserCommand;
+        }
 
         [HttpGet]
         [AllowAnonymous]
@@ -59,31 +68,16 @@ namespace AMI.MVC.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Create an application user.
-                ApplicationUser user = new ApplicationUser
+                if (await this._isAllowedToRegisterCommand(registerModel.EmailAddress).Execute())
                 {
-                    CreatedOn = DateTime.Now,
-                    Email = registerModel.EmailAddress,
-                    IsActive = true,
-                    UserName = registerModel.EmailAddress
-                };
-
-                var identityResult = await UserCommands.RegisterUser(user, registerModel.Password);
-                if (identityResult.Succeeded)
-                {
-                    //Log them in.
-                    var claimsIdentity = await UserCommands.SignIn(registerModel.EmailAddress, registerModel.Password);
-                    if (claimsIdentity != null)
+                    if (await this._sendEmailForRegisteringUserCommand(registerModel.EmailAddress).Execute())
                     {
-                        AuthenticationManager.SignIn(claimsIdentity);
-                        return RedirectToAction("Index", "Home");
-                    }
 
-                    ModelState.AddModelError("", "MAJOR ERROR: UNABLE TO SIGN IN NEW REGISTER USER. WTF.");
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", string.Join(", ", identityResult.Errors));
+                    ModelState.AddModelError("", "Your email address is not in our system to be allowed to register. Contact the site administrator to get added.");
                 }
             }
             //Here, means we're invalid, show the view again.

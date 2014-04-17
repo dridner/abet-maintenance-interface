@@ -53,7 +53,7 @@ namespace AMI.Data.SeedInformation
 
         private static bool CreateUser(UserManager<ApplicationUser> manager, ApplicationUser user)
         {
-            IdentityResult result = manager.Create(user);
+            IdentityResult result = manager.Create(user, "TempPassword");
             return result.Succeeded;
         }
     }
