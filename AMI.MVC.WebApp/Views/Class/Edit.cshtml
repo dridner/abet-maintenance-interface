@@ -24,25 +24,28 @@
     </div>
 }
 
-<table>
-    <tbody></tbody>
-    <tr>
-        <th>Description</th>
-        <th>Actions</th>
-    </tr>
-    @foreach (AMI.Model.StudentLearningObjective slo in Model.LearningObjectives)
-    {
+@if (Model.Id != 0)
+{
+    <table>
+        <tbody></tbody>
         <tr>
-            <td>@slo.Text</td>
-            <td>@Html.ActionLink("edit", MVC5.SLO.Edit(Model.Id, slo.Id))|@Html.ActionLink("delete", MVC5.SLO.Delete(Model.Id, slo.Id))
-            </td>
+            <th>Description</th>
+            <th>Actions</th>
         </tr>
-    }
-    <tr>
-        <td style="text-align:center;">&#60;<b>Create New</b>&#62;</td>
-        <td>@Html.ActionLink("create", MVC5.SLO.Edit(Model.Id, 0))</td>
-    </tr>
-</table>
+        @foreach (AMI.Model.StudentLearningObjective slo in Model.LearningObjectives)
+        {
+            <tr>
+                <td>@slo.Text</td>
+                <td>@Html.ActionLink("edit", MVC5.SLO.Edit(Model.Id, slo.Id))|@Html.ActionLink("delete", MVC5.SLO.Delete(Model.Id, slo.Id))
+                </td>
+            </tr>
+        }
+        <tr>
+            <td style="text-align: center;">&#60;<b>Create New</b>&#62;</td>
+            <td>@Html.ActionLink("create", MVC5.SLO.Edit(Model.Id, 0))</td>
+        </tr>
+    </table>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
