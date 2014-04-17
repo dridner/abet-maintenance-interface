@@ -243,7 +243,7 @@ namespace AMI.Data.SeedInformation
 
         }
 
-        protected static void CreateSLOForClassWithOutcome(ABETContext context, Class newClass, ApplicationUser systemUser, string sloText, List<int> eacOutcomes, List<int> cacOutcomes)
+        protected static void CreateSLOForClassWithOutcome(ABETContext context, Class newClass, ApplicationUser systemUser, string sloText, List<int> eacOutcomes, List<int> cacOutcomes, int orderNumber)
         {
             StudentLearningObjective objective = new StudentLearningObjective();
             objective.Class = newClass;
@@ -251,6 +251,7 @@ namespace AMI.Data.SeedInformation
             objective.CreatedOn = DateTime.UtcNow;
             objective.IsActive = true;
             objective.Text = sloText;
+            objective.Order = orderNumber;
             objective.SupportedOutcomes = new List<Outcome>();
 
             foreach (int id in eacOutcomes)

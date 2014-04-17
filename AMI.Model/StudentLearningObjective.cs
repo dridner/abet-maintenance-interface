@@ -13,6 +13,7 @@ namespace AMI.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public int Order { get; set; }
         public virtual Class Class { get; set; }
         public string Text { get; set; }
 

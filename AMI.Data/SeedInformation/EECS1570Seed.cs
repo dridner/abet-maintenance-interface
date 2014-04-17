@@ -19,15 +19,16 @@ namespace AMI.Data.SeedInformation
             List<int> eacOutcomes = new List<int> { 5, 11 };
             List<int> cacOutcomes = new List<int> { 2, 3 };
 
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "When given a problem description, develop a Java solution of moderate complexity based on user-defined classes and standard library functions and classes.", eacOutcomes, cacOutcomes);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "When given an algorithm, examine its properties, infer the asymptotic runtime, and express its runtime using big-O notation.", eacOutcomes, cacOutcomes);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand and apply ideas to make a program more useful as regards reuse, readability, and maintenance.", eacOutcomes, cacOutcomes);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand the concept of classical abstract data types (ADTs) and how to express an ADT in Java.", eacOutcomes, cacOutcomes);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "When given a problem description, choose an appropriate ADT and give a rationale for the choice.", eacOutcomes, cacOutcomes);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand various data structures in Computer Science and how they can be applied in a variety of problems of recurring interest.", eacOutcomes, cacOutcomes);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand basic concepts of algorithm analysis.", eacOutcomes, cacOutcomes);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Write programs using Lists, Stacks, Queues, and Hash tables.", eacOutcomes, cacOutcomes);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "When given a collection of unordered data, understand and use various sorting algorithms.", eacOutcomes, cacOutcomes);
+            int i = 1;
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "When given a problem description, develop a Java solution of moderate complexity based on user-defined classes and standard library functions and classes.", eacOutcomes, cacOutcomes, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "When given an algorithm, examine its properties, infer the asymptotic runtime, and express its runtime using big-O notation.", eacOutcomes, cacOutcomes, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand and apply ideas to make a program more useful as regards reuse, readability, and maintenance.", eacOutcomes, cacOutcomes, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand the concept of classical abstract data types (ADTs) and how to express an ADT in Java.", eacOutcomes, cacOutcomes, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "When given a problem description, choose an appropriate ADT and give a rationale for the choice.", eacOutcomes, cacOutcomes, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand various data structures in Computer Science and how they can be applied in a variety of problems of recurring interest.", eacOutcomes, cacOutcomes, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand basic concepts of algorithm analysis.", eacOutcomes, cacOutcomes, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Write programs using Lists, Stacks, Queues, and Hash tables.", eacOutcomes, cacOutcomes, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "When given a collection of unordered data, understand and use various sorting algorithms.", eacOutcomes, cacOutcomes, i++);
 
             CreateCommitteeMemberForClass(context, newClass, systemUserAccount, userManager, "henry.ledgard", CommitteeRank.Chair);
             CreateCommitteeMemberForClass(context, newClass, systemUserAccount, userManager, "larry.thomas", CommitteeRank.ViceChair);

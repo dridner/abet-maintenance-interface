@@ -20,7 +20,7 @@ namespace AMI.Business.Logic.ClassLogic
 
         internal override async Task<Class> Execute(IDBConnection conn)
         {
-            return await conn.ABETContext.Classes.Include(c => c.LearningObjectives).Include(m => m.CommitteeMembers).Include("CommitteeMembers.User").SingleAsync(c => c.Id == this._id);
+            return await conn.ABETContext.Classes.Include(c => c.LearningObjectives).Include("LearningObjectives.SupportedOutcomes").Include(m => m.CommitteeMembers).Include("CommitteeMembers.User").SingleAsync(c => c.Id == this._id);
         }
     }
 }

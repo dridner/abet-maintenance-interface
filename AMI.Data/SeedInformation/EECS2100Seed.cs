@@ -19,11 +19,12 @@ namespace AMI.Data.SeedInformation
             var eac = new List<int>{1,5};
             var cac = new List<int>{1,3};
 
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Program a simple machine using microcode to implement specific instructions.", eac, cac);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Write programs using assembly language demonstrating an ability to use subprogram linkage, basic processor functions, and control structures.", eac, cac);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand modern computer architecture enhancements and be able to compare and contrast processors.", eac, cac);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand the memory hierarchy and its importance and impact on processor performance.", eac, cac);
-            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Know and discuss the major features of RISC and CISC architectures.", eac, cac);
+            int i = 1;
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Program a simple machine using microcode to implement specific instructions.", eac, cac, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Write programs using assembly language demonstrating an ability to use subprogram linkage, basic processor functions, and control structures.", eac, cac, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand modern computer architecture enhancements and be able to compare and contrast processors.", eac, cac, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Understand the memory hierarchy and its importance and impact on processor performance.", eac, cac, i++);
+            CreateSLOForClassWithOutcome(context, newClass, systemUserAccount, "Know and discuss the major features of RISC and CISC architectures.", eac, cac, i++);
 
             CreateCommitteeMemberForClass(context, newClass, systemUserAccount, userManager, "gerald.heuring", CommitteeRank.Chair);
             CreateCommitteeMemberForClass(context, newClass, systemUserAccount, userManager, "brent.nowlin", CommitteeRank.ViceChair);

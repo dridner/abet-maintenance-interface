@@ -20,6 +20,30 @@
         </div>
     </div>
     <div>
+        <h4 style="margin-bottom:5px;">Supported Outcomes</h4>
+        @foreach (AMI.Model.Criteria criteria in Model.Criterias)
+        {
+        <div style="text-align:center;">
+            <h5 style="margin-bottom:5px;">@criteria.Name Outcomes Supported</h5>
+            <hr />
+        </div>
+        <div>
+            @foreach (AMI.Model.Outcome outcome in criteria.Outcomes)
+	        {
+                var sloIds = Model.Class.LearningObjectives.Select(m => m.Id);
+                var slos = outcome.SupportedLearningObjectives.Where(m => sloIds.Contains(m.Id));
+                if (slos.Count() > 0)
+                {
+                <div>
+                    <div><span style="font-weight:bold;">Outcome: @outcome.Text</div>
+                    Supported by SLOS: @string.Join(",", slos.Select(m => m.Order))
+                </div>
+                }
+	        }
+        </div>
+        }
+    </div>
+    <div>
         <h4 style="margin-bottom:5px;">Committee Members</h4>
         <div>
             @for (int i = 0; i < Model.Class.CommitteeMembers.Count; i++)

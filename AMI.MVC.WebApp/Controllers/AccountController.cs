@@ -88,7 +88,7 @@ namespace AMI.MVC.WebApp.Controllers
         public virtual ActionResult Logout()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home"); 
+            return RedirectToAction("Index", "Public"); 
         }
 	}
 }
