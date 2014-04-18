@@ -36,7 +36,13 @@
                 {
                 <div>
                     <div><span style="font-weight:bold;">Outcome: @outcome.Text</div>
-                    Supported by SLOS: @string.Join(",", slos.Select(m => m.Order))
+                    <div>Supported by Learning Objective@(slos.Count() > 1 ? "s" : ""):</div>
+                    <ul>
+                        @foreach (var slo in slos)
+                        {
+                            <li>@(slo.Order). @slo.Text</li>
+                        }
+                    </ul>
                 </div>
                 }
 	        }
