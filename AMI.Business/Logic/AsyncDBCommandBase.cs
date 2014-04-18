@@ -14,16 +14,10 @@ namespace AMI.Business.Logic
         public override async Task<T> Execute()
         {
             T obj = default(T);
-            try
+
+            using (IDBConnection connection = this._connectionFactory.CreateConnection())
             {
-                using (IDBConnection connection = this._connectionFactory.CreateConnection())
-                {
-                    obj = await this.Execute(connection);
-                }
-            }
-            catch (Exception)
-            {
-                
+                obj = await this.Execute(connection);
             }
 
             return obj;

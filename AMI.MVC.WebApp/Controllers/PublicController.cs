@@ -35,7 +35,7 @@ namespace AMI.MVC.WebApp.Controllers
         [HttpGet]
         public async virtual Task<ActionResult> ClassDetails(int id)
         {
-            var theClass = await this._getClassById(id).Execute();
+            var theClass = await this._getClassById(id, true, true, true).Execute();
             var criterias = await this._getCriteriaListCommand(null).Execute();
             var model = new ClassDetailModel();
             model.Class = theClass;

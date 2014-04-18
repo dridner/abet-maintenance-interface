@@ -17,6 +17,7 @@ namespace AMI.MVC.WebApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.Configure(BundleTable.Bundles);
             AutofacConfig.Configure();
+            AutoMapperConfig.Configure();
         }
     }
 }
