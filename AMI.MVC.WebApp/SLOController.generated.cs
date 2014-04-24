@@ -212,19 +212,6 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [NonAction]
-        partial void RemoveOutcomeFromSLOOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int sloID, int ocID);
-
-        [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> RemoveOutcomeFromSLO(int sloID, int ocID)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveOutcomeFromSLO);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sloID", sloID);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "ocID", ocID);
-            RemoveOutcomeFromSLOOverride(callInfo, sloID, ocID);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
-        }
-
-        [NonAction]
         partial void AddOutcomeToSLOOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int sloID, int outcomeID);
 
         [NonAction]
@@ -234,6 +221,19 @@ namespace AMI.MVC.WebApp.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sloID", sloID);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "outcomeID", outcomeID);
             AddOutcomeToSLOOverride(callInfo, sloID, outcomeID);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void RemoveOutcomeFromSLOOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int sloID, int ocID);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> RemoveOutcomeFromSLO(int sloID, int ocID)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveOutcomeFromSLO);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sloID", sloID);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "ocID", ocID);
+            RemoveOutcomeFromSLOOverride(callInfo, sloID, ocID);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 

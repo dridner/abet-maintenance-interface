@@ -33,6 +33,10 @@ namespace AMI.Business.Logic.UserLogic
                 identity = await conn.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                 identity.AddClaim(new Claim(ClaimTypes.Email, user.UserName));
                 identity.AddClaim(new Claim("UserId", user.Id));
+                foreach (string roleName in await conn.UserManager.GetRolesAsync(user.Id))
+                {
+                    identity.AddClaim(new Claim(ClaimTypes.Role, roleName));
+                }
             }
 
             return identity;

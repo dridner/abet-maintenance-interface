@@ -46,7 +46,10 @@ namespace AMI.MVC.WebApp.Controllers
                 if (claimsIdentity != null)
                 {
                     AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = model.RememberMe }, claimsIdentity);
-                    return RedirectToAction("Index", "Home");
+                    if (claimsIdentity.HasClaim(m => m.Value == "Faculty"))
+                        return RedirectToAction("Index", "Home");
+                    else if (claimsIdentity.HasClaim(m => m.Value == "SiteAdmin"))
+                        return RedirectToAction(MVC5.Admin.User.Index());
                 }
                 ModelState.AddModelError("", "Invalid username or password!");
             }

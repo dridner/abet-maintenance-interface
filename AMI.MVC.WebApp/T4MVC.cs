@@ -25,6 +25,8 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC5
 {
+    static readonly AdminClass s_Admin = new AdminClass();
+    public static AdminClass Admin { get { return s_Admin; } }
     public static AMI.MVC.WebApp.Controllers.AccountController Account = new AMI.MVC.WebApp.Controllers.T4MVC_AccountController();
     public static AMI.MVC.WebApp.Controllers.ClassController Class = new AMI.MVC.WebApp.Controllers.T4MVC_ClassController();
     public static AMI.MVC.WebApp.Controllers.HomeController Home = new AMI.MVC.WebApp.Controllers.T4MVC_HomeController();
@@ -35,6 +37,13 @@ public static partial class MVC5
 
 namespace T4MVC
 {
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class AdminClass
+    {
+        public readonly string Name = "Admin";
+        public AMI.MVC.WebApp.Areas.Admin.Controllers.UserController User = new AMI.MVC.WebApp.Areas.Admin.Controllers.T4MVC_UserController();
+        public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
+    }
 }
 
 namespace T4MVC
@@ -73,9 +82,10 @@ namespace Links
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string jquery_1_10_2_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.10.2.intellisense.min.js") ? Url("jquery-1.10.2.intellisense.min.js") : Url("jquery-1.10.2.intellisense.js");
-        public static readonly string jquery_1_10_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.10.2.min.js") ? Url("jquery-1.10.2.min.js") : Url("jquery-1.10.2.js");
-        public static readonly string jquery_1_10_2_min_js = Url("jquery-1.10.2.min.js");
-        public static readonly string jquery_1_10_2_min_map = Url("jquery-1.10.2.min.map");
+        public static readonly string jquery_2_1_0_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.0.intellisense.min.js") ? Url("jquery-2.1.0.intellisense.min.js") : Url("jquery-2.1.0.intellisense.js");
+        public static readonly string jquery_2_1_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.0.min.js") ? Url("jquery-2.1.0.min.js") : Url("jquery-2.1.0.js");
+        public static readonly string jquery_2_1_0_min_js = Url("jquery-2.1.0.min.js");
+        public static readonly string jquery_2_1_0_min_map = Url("jquery-2.1.0.min.map");
         public static readonly string jquery_ui_1_10_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.10.4.min.js") ? Url("jquery-ui-1.10.4.min.js") : Url("jquery-ui-1.10.4.js");
         public static readonly string jquery_ui_1_10_4_min_js = Url("jquery-ui-1.10.4.min.js");
         public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");
