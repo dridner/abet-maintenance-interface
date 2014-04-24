@@ -257,6 +257,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABETController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -275,6 +278,7 @@
     <Compile Include="ClassController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ABETController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClassController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -323,6 +327,7 @@
     <Content Include="Views\Public\_ClassDetails.cshtml" />
     <Content Include="Views\SLO\Edit.cshtml" />
     <Content Include="Views\SLO\AddOutcomeToSLO.cshtml" />
+    <Content Include="Views\ABET\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

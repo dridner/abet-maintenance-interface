@@ -27,6 +27,7 @@ public static partial class MVC5
 {
     static readonly AdminClass s_Admin = new AdminClass();
     public static AdminClass Admin { get { return s_Admin; } }
+    public static AMI.MVC.WebApp.Controllers.ABETController ABET = new AMI.MVC.WebApp.Controllers.T4MVC_ABETController();
     public static AMI.MVC.WebApp.Controllers.AccountController Account = new AMI.MVC.WebApp.Controllers.T4MVC_AccountController();
     public static AMI.MVC.WebApp.Controllers.ClassController Class = new AMI.MVC.WebApp.Controllers.T4MVC_ClassController();
     public static AMI.MVC.WebApp.Controllers.HomeController Home = new AMI.MVC.WebApp.Controllers.T4MVC_HomeController();
@@ -102,6 +103,8 @@ namespace Links
         private const string URLPATH = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+        public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
+             
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class themes {
             private const string URLPATH = "~/Content/themes";

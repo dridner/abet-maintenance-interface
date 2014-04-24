@@ -21,15 +21,15 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace AMI.MVC.WebApp.Areas.Admin.Controllers
+namespace AMI.MVC.WebApp.Controllers
 {
-    public partial class UserController
+    public partial class ABETController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public UserController() { }
+        public ABETController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected UserController(Dummy d) { }
+        protected ABETController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -59,13 +59,13 @@ namespace AMI.MVC.WebApp.Areas.Admin.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public UserController Actions { get { return MVC5.Admin.User; } }
+        public ABETController Actions { get { return MVC5.ABET; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Admin";
+        public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "User";
+        public readonly string Name = "ABET";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "User";
+        public const string NameConst = "ABET";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -95,14 +95,14 @@ namespace AMI.MVC.WebApp.Areas.Admin.Controllers
             {
                 public readonly string Index = "Index";
             }
-            public readonly string Index = "~/Areas/Admin/Views/User/Index.cshtml";
+            public readonly string Index = "~/Views/ABET/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_UserController : AMI.MVC.WebApp.Areas.Admin.Controllers.UserController
+    public partial class T4MVC_ABETController : AMI.MVC.WebApp.Controllers.ABETController
     {
-        public T4MVC_UserController() : base(Dummy.Instance) { }
+        public T4MVC_ABETController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);

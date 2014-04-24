@@ -46,10 +46,18 @@ namespace AMI.MVC.WebApp.Controllers
                 if (claimsIdentity != null)
                 {
                     AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = model.RememberMe }, claimsIdentity);
-                    if (claimsIdentity.HasClaim(m => m.Value == "Faculty"))
-                        return RedirectToAction("Index", "Home");
-                    else if (claimsIdentity.HasClaim(m => m.Value == "SiteAdmin"))
+                    if (claimsIdentity.HasClaim(m => m.Type == claimsIdentity.RoleClaimType && m.Value == "Faculty"))
+                    {
+                        return RedirectToAction(MVC5.Home.Index());
+                    }
+                    else if (claimsIdentity.HasClaim(m => m.Type == claimsIdentity.RoleClaimType && m.Value == "SiteAdmin"))
+                    {
                         return RedirectToAction(MVC5.Admin.User.Index());
+                    }
+                    else if (claimsIdentity.HasClaim(m => m.Type == claimsIdentity.RoleClaimType && m.Value == "ABETAdmin"))
+                    {
+                        return RedirectToAction(MVC5.ABET.Index());
+                    }
                 }
                 ModelState.AddModelError("", "Invalid username or password!");
             }
