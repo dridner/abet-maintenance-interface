@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationRole.cs" />
     <Compile Include="Class.cs" />
     <Compile Include="ClassHistory.cs" />
     <Compile Include="CommitteeMember.cs" />
