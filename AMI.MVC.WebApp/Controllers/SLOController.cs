@@ -93,7 +93,10 @@ namespace AMI.MVC.WebApp.Controllers
         [HttpPost]
         public virtual async Task<ActionResult> AddOutcomeToSLO(int sloID, int outcomeID)
         {
-            //TODO finish
+            var slo = await this._getSLOByIDCommand(sloID).Execute();
+            slo.SupportedOutcomes.Add(await this._getOutcomeByIDCommand(outcomeID).Execute());
+            await this._saveSLOCommand(slo).Execute();
+
             return RedirectToAction(MVC5.SLO.Edit(sloID));
         }
 
