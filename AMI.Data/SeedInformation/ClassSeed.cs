@@ -256,13 +256,13 @@ namespace AMI.Data.SeedInformation
 
             foreach (int id in eacOutcomes)
             {
-                var outcome = context.Outcomes.Local.Where(m => m.Criteria.Name == "EAC" && m.Id == id).First();
+                var outcome = context.Outcomes.Local.Where(m => m.Criteria.Abbreviation == "EAC" && m.Id == id).First();
                 objective.SupportedOutcomes.Add(outcome);
             }
 
             foreach (var id in cacOutcomes)
             {
-                var outcome = context.Outcomes.Local.Where(m => m.Criteria.Name == "CAC" && m.Id == id).First();
+                var outcome = context.Outcomes.Local.Where(m => m.Criteria.Abbreviation == "CAC" && m.Id == id).First();
                 objective.SupportedOutcomes.Add(outcome);
             }
 

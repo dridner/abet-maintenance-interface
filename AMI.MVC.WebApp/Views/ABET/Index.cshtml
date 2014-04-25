@@ -4,5 +4,19 @@
 }
 
 <div>
-    <div>These are the current Program Criterias and their outcomes.</div>
+    <p>These are the current Program Criterias and their outcomes.</p>
+    <div>
+        @foreach (AMI.Model.Criteria criteria in Model)
+        {
+            <div><span style="font-weight:bold">@criteria.Name</span><div>@Html.ActionLink("Manage this Criteria", MVC5.ABET.Edit(criteria.Id))</div></div>
+            <div>
+                <ul>
+                    @foreach (AMI.Model.Outcome outcome in criteria.Outcomes)
+                    {
+                        <li>@outcome.Text</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
 </div>

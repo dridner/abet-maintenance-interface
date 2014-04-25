@@ -328,6 +328,7 @@
     <Content Include="Views\SLO\Edit.cshtml" />
     <Content Include="Views\SLO\AddOutcomeToSLO.cshtml" />
     <Content Include="Views\ABET\Index.cshtml" />
+    <Content Include="Views\ABET\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

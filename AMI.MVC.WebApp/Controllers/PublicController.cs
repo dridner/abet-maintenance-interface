@@ -42,7 +42,7 @@ namespace AMI.MVC.WebApp.Controllers
                 IncludeOutcomes = true,
                 IncludeLearningObjectives = true
             };
-            var criterias = await this._getCriteriaListCommand(null).Execute();
+            var criterias = await this._getCriteriaListCommand(criteriaFilter).Execute();
             var model = new ClassDetailModel();
             model.Class = theClass;
             model.Criterias = criterias;

@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Data.Entity;
+using System.Threading.Tasks;
 using AMI.Business.Logic;
 using AMI.Data.DataConnection;
 using AMI.Model;
 using AutoMapper;
 
-namespace AMI.Business.Logic.ProgramLogic
+namespace AMI.Business.Logic.CriteriaLogic
 {
     public class GetCriteriaByIDCommand : AsyncDBCommandBase<Criteria>
     {
@@ -19,7 +21,7 @@ namespace AMI.Business.Logic.ProgramLogic
 
         internal override async Task<Criteria> Execute(IDBConnection conn)
         {
-            return await conn.ABETContext.Criterias.FindAsync(this._id);
+            return await conn.ABETContext.Criterias.Include(m => m.Outcomes).Where(m => m.Id == this._id).SingleAsync();
         }
     }
 }

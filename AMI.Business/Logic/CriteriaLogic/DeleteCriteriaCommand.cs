@@ -3,7 +3,7 @@ using AMI.Business.Logic;
 using AMI.Data.DataConnection;
 using AMI.Model;
 
-namespace AMI.Business.Logic.ProgramLogic
+namespace AMI.Business.Logic.CriteriaLogic
 {
     public class DeleteCriteriaCommand : AsyncDBCommandBase<bool>
     {

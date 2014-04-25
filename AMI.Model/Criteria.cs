@@ -14,6 +14,7 @@ namespace AMI.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Abbreviation { get; set; }
 
         public ApplicationUser CreatedByUser { get; set; }
         public ICollection<Outcome> Outcomes { get; set; }

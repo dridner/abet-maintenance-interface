@@ -12,7 +12,7 @@ namespace AMI.Data.SeedInformation
     {
         public static void Seed(ABETContext context, ApplicationUser systemUserAccount)
         {
-            CreateCriteria(context, systemUserAccount, "EAC",
+            CreateCriteria(context, systemUserAccount, "Criteria for Accrediting Engineering Programs", "EAC",
                 "An ability to apply knowledge of mathematics, science, and engineering.",
                 "An ability to design and conduct experiments, as well as to analyze and interpret data.",
                 "An ability to design a system, component, or process to meet desired needs within realistic constraints such as economic, environmental, social, political, ethical, health and safety, manufacturability, and sustainability.",
@@ -26,7 +26,7 @@ namespace AMI.Data.SeedInformation
                 "An ability to use the techniques, skills, and modern engineering tools necessary for engineering practice."
                 );
 
-            CreateCriteria(context, systemUserAccount, "CAC", 
+            CreateCriteria(context, systemUserAccount, "Criteria for Accrediting Computing Programs", "CAC", 
                 "An ability to apply knowledge of computing and mathematics appropriate to the discipline.",
                 "An ability to analyze a problem, and identify and define the computing requirements appropriate to its solution.",
                 "An ability to design, implement, and evaluate a computer-based system, process, component, or program to meet desired needs.",
@@ -39,11 +39,12 @@ namespace AMI.Data.SeedInformation
                 );
         }
 
-        private static void CreateCriteria(ABETContext context, ApplicationUser systemUserAccount, string criteriaName, params string[] outcomeTexts)
+        private static void CreateCriteria(ABETContext context, ApplicationUser systemUserAccount, string criteriaName, string criteriaAbbreviation, params string[] outcomeTexts)
         {
             
             Criteria criteria = new Criteria();
             criteria.Name = criteriaName;
+            criteria.Abbreviation = criteriaAbbreviation;
             criteria.Outcomes = new List<Outcome>();
 
             for (int i = 0; i < outcomeTexts.Length; i++)
