@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AMI.Business.Logic.CriteriaLogic;
+using AMI.Model.Filters;
 
 namespace AMI.MVC.WebApp.Controllers
 {
@@ -18,11 +20,11 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult Index()
+        public async virtual Task<ActionResult> Index()
         {
+            var criterias = await this._getCriteriaListCommand(new CriteriaFilter()).Execute();
 
-
-            return View();
+            return View(criterias);
         }
 	}
 }
