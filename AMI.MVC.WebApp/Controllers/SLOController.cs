@@ -66,7 +66,7 @@ namespace AMI.MVC.WebApp.Controllers
             else
             {
                 sloToUpdate = new StudentLearningObjective();
-                sloToUpdate.Class = await this._getClassByIDCommand(slo.ClassID).Execute();
+                sloToUpdate.Class = await this._getClassByIDCommand(slo.ClassID, includeLearningObjectives:true).Execute();
                 sloToUpdate.CreatedOn = DateTime.UtcNow;
             }
 
@@ -81,7 +81,7 @@ namespace AMI.MVC.WebApp.Controllers
             var sloToUpdate = await this._getSLOByIDCommand(sloID).Execute();
             OutcomeToSloModel model = new OutcomeToSloModel { SLOID = sloID };
             model.AllOutcomes = new List<Outcome>();
-            var criterion = await this._getCriteriaCommand(new CriteriaFilter()).Execute();
+            var criterion = await this._getCriteriaCommand(new CriteriaFilter() { IncludeLearningObjectives = true, IncludeOutcomes = true }).Execute();
             foreach (var criteria in criterion)
             {
                 model.AllOutcomes.AddRange(criteria.Outcomes.ToList());

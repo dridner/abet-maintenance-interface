@@ -54,7 +54,7 @@ namespace AMI.MVC.WebApp.Controllers
         [HttpGet]
         public virtual async Task<ActionResult> Edit(int id = 0)
         {
-            var model = await this._getClassByIDCommand(id).Execute();
+            var model = await this._getClassByIDCommand(id, includeLearningObjectives:true).Execute();
             if (model == null)
             {
                 model = new Class();
