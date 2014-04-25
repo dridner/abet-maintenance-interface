@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AMI.Business.Logic;
 using AMI.Data.DataConnection;
 using AMI.Model;
@@ -27,8 +28,12 @@ namespace AMI.Business.Logic.CommitteeMemberLogic
             if (modelToUpdate != null)
             {
                 CommitteeMemberHistory history = Mapper.Map<CommitteeMemberHistory>(modelToUpdate);
+                history.CommitteeMember = modelToUpdate;
+                history.LastActiveDate = DateTime.UtcNow;
                 await this._createHistoryCommand(history).Execute(conn);
-                Mapper.Map(this._model, modelToUpdate);
+                modelToUpdate.CommitteeRank = this._model.CommitteeRank;
+                modelToUpdate.User = this._model.User;
+                modelToUpdate.Class = this._model.Class;
                 conn.ABETContext.SaveChanges();
             }
             else

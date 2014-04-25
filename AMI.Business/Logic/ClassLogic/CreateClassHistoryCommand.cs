@@ -12,9 +12,9 @@ namespace AMI.Business.Logic.ClassLogic
 
         public delegate CreateClassHistoryCommand Factory(ClassHistory modelToSave);
 
-        public CreateClassHistoryCommand(ClassHistory classToSave)
+        public CreateClassHistoryCommand(ClassHistory modelToSave)
         {
-            this._model = classToSave;
+            this._model = modelToSave;
         }
 
         internal override async Task<ClassHistory> Execute(IDBConnection conn)

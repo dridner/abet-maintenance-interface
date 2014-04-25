@@ -4,6 +4,7 @@ using AMI.Data.DataConnection;
 using AMI.Model;
 using AutoMapper;
 using System.Linq;
+using System;
 
 namespace AMI.Business.Logic.ClassLogic
 {
@@ -28,8 +29,12 @@ namespace AMI.Business.Logic.ClassLogic
             if (modelToUpdate != null)
             {
                 ClassHistory history = Mapper.Map<ClassHistory>(modelToUpdate);
+                history.Class = modelToUpdate;
+                history.LastActiveDate = DateTime.UtcNow;
                 await this._createHistoryCommand(history).Execute(conn);
-                Mapper.Map(this._model, modelToUpdate);
+                modelToUpdate.Name = this._model.Name;
+                modelToUpdate.Number = this._model.Number;
+                modelToUpdate.Prefix = this._model.Prefix;
                 conn.ABETContext.SaveChanges();
             }
             else

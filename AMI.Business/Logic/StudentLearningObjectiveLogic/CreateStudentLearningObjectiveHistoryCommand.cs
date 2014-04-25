@@ -12,9 +12,9 @@ namespace AMI.Business.Logic.StudentLearningObjectiveLogic
 
         public delegate CreateStudentLearningObjectiveHistoryCommand Factory(StudentLearningObjectiveHistory modelToSave);
 
-        public CreateStudentLearningObjectiveHistoryCommand(StudentLearningObjectiveHistory classToSave)
+        public CreateStudentLearningObjectiveHistoryCommand(StudentLearningObjectiveHistory modelToSave)
         {
-            this._model = classToSave;
+            this._model = modelToSave;
         }
 
         internal override async Task<StudentLearningObjectiveHistory> Execute(IDBConnection conn)

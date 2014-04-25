@@ -11,9 +11,9 @@ namespace AMI.Business.Logic.CommitteeMemberLogic
 
         public delegate CreateCommitteeMemberHistoryCommand Factory(CommitteeMemberHistory modelToSave);
 
-        public CreateCommitteeMemberHistoryCommand(CommitteeMemberHistory classToSave)
+        public CreateCommitteeMemberHistoryCommand(CommitteeMemberHistory modelToSave)
         {
-            this._model = classToSave;
+            this._model = modelToSave;
         }
 
         internal override async Task<CommitteeMemberHistory> Execute(IDBConnection conn)

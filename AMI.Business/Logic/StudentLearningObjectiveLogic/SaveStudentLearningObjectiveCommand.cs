@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AMI.Business.Logic;
 using AMI.Data.DataConnection;
 using AMI.Model;
@@ -27,8 +28,11 @@ namespace AMI.Business.Logic.StudentLearningObjectiveLogic
             if (modelToUpdate != null)
             {
                 StudentLearningObjectiveHistory history = Mapper.Map<StudentLearningObjectiveHistory>(modelToUpdate);
+                history.LearningObjective = modelToUpdate;
+                history.LastActiveDate = DateTime.Now;
                 await this._createHistoryCommand(history).Execute(conn);
-                Mapper.Map(this._model, modelToUpdate);
+                modelToUpdate.Text = this._model.Text;
+                modelToUpdate.Class = this._model.Class;
                 conn.ABETContext.SaveChanges();
             }
             else

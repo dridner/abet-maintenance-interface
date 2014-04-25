@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AMI.Business.Logic;
 using AMI.Data.DataConnection;
 using AMI.Model;
@@ -27,8 +28,10 @@ namespace AMI.Business.Logic.OutcomeLogic
             if (modelToUpdate != null)
             {
                 OutcomeHistory history = Mapper.Map<OutcomeHistory>(modelToUpdate);
+                history.Outcome = modelToUpdate;
+                history.LastActiveDate = DateTime.UtcNow;
                 await this._createHistoryCommand(history).Execute(conn);
-                Mapper.Map(this._model, modelToUpdate);
+                modelToUpdate.Text = this._model.Text;
                 conn.ABETContext.SaveChanges();
             }
             else

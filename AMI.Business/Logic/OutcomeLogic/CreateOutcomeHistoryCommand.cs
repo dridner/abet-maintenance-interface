@@ -8,13 +8,13 @@ namespace AMI.Business.Logic.OutcomeLogic
 {
     public class CreateOutcomeHistoryCommand : AsyncDBCommandBase<OutcomeHistory>
     {
-        private OutcomeHistory _model;
-
         public delegate CreateOutcomeHistoryCommand Factory(OutcomeHistory modelToSave);
 
-        public CreateOutcomeHistoryCommand(OutcomeHistory classToSave)
+        private OutcomeHistory _model;
+
+        public CreateOutcomeHistoryCommand(OutcomeHistory modelToSave)
         {
-            this._model = classToSave;
+            this._model = modelToSave;
         }
 
         internal override async Task<OutcomeHistory> Execute(IDBConnection conn)
