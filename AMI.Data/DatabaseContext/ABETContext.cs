@@ -52,7 +52,10 @@ namespace AMI.Data.DatabaseContext
         {
             protected override void Seed(ABETContext context)
             {
+                var roleManager = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(context));
+                RoleSeed.Seed(roleManager);
                 var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
                 var systemUserAccount = UserSeed.Seed(userManager, context);
 
                 CriteriaSeed.Seed(context, systemUserAccount);

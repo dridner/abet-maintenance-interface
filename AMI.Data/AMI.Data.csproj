@@ -91,6 +91,7 @@
     <Compile Include="SeedInformation\EECS1590Seed.cs" />
     <Compile Include="SeedInformation\EECS2000Seed.cs" />
     <Compile Include="SeedInformation\EECS2100Seed.cs" />
+    <Compile Include="SeedInformation\RoleSeed.cs" />
     <Compile Include="SeedInformation\UserSeed.cs" />
   </ItemGroup>
   <ItemGroup>
