@@ -35,7 +35,13 @@ namespace AMI.MVC.WebApp.Controllers
         [HttpGet]
         public async virtual Task<ActionResult> ClassDetails(int id)
         {
+
             var theClass = await this._getClassById(id, includeLearningObjectives:true, includeSupportedOutcomes: true, includeCommitteeMembers: true).Execute();
+            CriteriaFilter criteriaFilter = new CriteriaFilter() 
+            {
+                IncludeOutcomes = true,
+                IncludeLearningObjectives = true
+            };
             var criterias = await this._getCriteriaListCommand(null).Execute();
             var model = new ClassDetailModel();
             model.Class = theClass;

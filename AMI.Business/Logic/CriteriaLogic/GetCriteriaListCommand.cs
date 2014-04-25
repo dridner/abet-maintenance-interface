@@ -26,6 +26,7 @@ namespace AMI.Business.Logic.CriteriaLogic
         internal async override Task<List<Criteria>> Execute(IDBConnection conn)
         {
             IQueryable<Criteria> queryable = conn.ABETContext.Criterias;
+
             if (this._filter != null)
             {
                 if (this._filter.Id.HasValue)
@@ -36,9 +37,17 @@ namespace AMI.Business.Logic.CriteriaLogic
                 {
                     queryable = queryable.Where(m => m.Name == this._filter.Name);
                 }
+                if (this._filter.IncludeOutcomes)
+                {
+                    queryable = queryable.Include(m => m.Outcomes);
+                }
+                if (this._filter.IncludeLearningObjectives)
+                {
+                    queryable = queryable.Include("Outcomes.SupportedLearningObjectives");
+                }
             }
 
-            return await queryable.Include(c => c.Outcomes).Include("Outcomes.SupportedLearningObjectives").ToListAsync();
+            return await queryable.ToListAsync();
         }
     }
 }

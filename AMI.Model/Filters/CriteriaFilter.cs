@@ -10,5 +10,8 @@ namespace AMI.Model.Filters
     {
         public int? Id { get; set; }
         public string Name { get; set; }
+
+        public bool IncludeOutcomes { get; set; }
+        public bool IncludeLearningObjectives { get; set; }
     }
 }
