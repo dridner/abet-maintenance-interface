@@ -13,8 +13,6 @@ namespace AMI.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [ForeignKey("Criteria")]
-        public int CriteriaId { get; set; }
         public string Text { get; set; }
 
         public bool IsActive { get; set; }

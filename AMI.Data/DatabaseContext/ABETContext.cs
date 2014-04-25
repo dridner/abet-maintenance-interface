@@ -44,7 +44,6 @@ namespace AMI.Data.DatabaseContext
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(l => l.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
-            modelBuilder.Entity<Outcome>().HasKey(o => new { o.Id, o.CriteriaId });
             Database.SetInitializer<ABETContext>(new CreateABETDatabaseIfNotExists());
         }
 

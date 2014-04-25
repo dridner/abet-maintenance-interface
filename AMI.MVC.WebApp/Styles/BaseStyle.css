@@ -1,7 +1,7 @@
 ﻿body 
 {
     margin:auto;
-    width:960px;
+    max-width:960px;
 }
 nav > ul
 {

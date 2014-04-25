@@ -61,6 +61,13 @@ namespace AMI.MVC.WebApp.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> EditOutcome()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditOutcome);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ABETController Actions { get { return MVC5.ABET; } }
@@ -79,6 +86,7 @@ namespace AMI.MVC.WebApp.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Edit = "Edit";
+            public readonly string EditOutcome = "EditOutcome";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -86,6 +94,7 @@ namespace AMI.MVC.WebApp.Controllers
         {
             public const string Index = "Index";
             public const string Edit = "Edit";
+            public const string EditOutcome = "EditOutcome";
         }
 
 
@@ -97,6 +106,15 @@ namespace AMI.MVC.WebApp.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_EditOutcome s_params_EditOutcome = new ActionParamsClass_EditOutcome();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_EditOutcome EditOutcomeParams { get { return s_params_EditOutcome; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_EditOutcome
+        {
+            public readonly string id = "id";
+            public readonly string outcome = "outcome";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -107,9 +125,11 @@ namespace AMI.MVC.WebApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _EditOutcome = "_EditOutcome";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
+            public readonly string _EditOutcome = "~/Views/ABET/_EditOutcome.cshtml";
             public readonly string Edit = "~/Views/ABET/Edit.cshtml";
             public readonly string Index = "~/Views/ABET/Index.cshtml";
         }
@@ -140,6 +160,30 @@ namespace AMI.MVC.WebApp.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             EditOverride(callInfo, id);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void EditOutcomeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int? id);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> EditOutcome(int? id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditOutcome);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            EditOutcomeOverride(callInfo, id);
+            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void EditOutcomeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, AMI.Model.Outcome outcome);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> EditOutcome(AMI.Model.Outcome outcome)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditOutcome);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "outcome", outcome);
+            EditOutcomeOverride(callInfo, outcome);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 

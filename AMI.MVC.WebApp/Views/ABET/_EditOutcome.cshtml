@@ -1,0 +1,15 @@
+﻿@model AMI.Model.Outcome
+
+<div>
+    <div>
+        @using (Ajax.BeginForm(MVC5.ABET.EditOutcome(), new AjaxOptions() { HttpMethod = "POST", OnSuccess = "" }, new { id = "outcomeForm" }))
+        {
+            @Html.HiddenFor(m => m.Id)
+            <div>
+                <div>@Html.LabelFor(m => m.Text):</div>
+                <div>@Html.TextAreaFor(m => m.Text, 3, 35, null)</div>
+            </div>
+            @Html.HiddenFor(m => m.IsActive)
+        }
+    </div>
+</div>
