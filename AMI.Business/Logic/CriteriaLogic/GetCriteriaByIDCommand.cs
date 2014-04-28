@@ -1,10 +1,8 @@
-﻿using System.Linq;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
-using AMI.Business.Logic;
 using AMI.Data.DataConnection;
 using AMI.Model;
-using AutoMapper;
 
 namespace AMI.Business.Logic.CriteriaLogic
 {

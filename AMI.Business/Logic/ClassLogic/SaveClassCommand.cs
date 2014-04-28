@@ -35,13 +35,14 @@ namespace AMI.Business.Logic.ClassLogic
                 modelToUpdate.Name = this._model.Name;
                 modelToUpdate.Number = this._model.Number;
                 modelToUpdate.Prefix = this._model.Prefix;
-                conn.ABETContext.SaveChanges();
             }
             else
             {
                 conn.ABETContext.Classes.Add(this._model);
                 modelToUpdate = this._model;
             }
+
+            conn.ABETContext.SaveChanges();
 
             return modelToUpdate;
         }

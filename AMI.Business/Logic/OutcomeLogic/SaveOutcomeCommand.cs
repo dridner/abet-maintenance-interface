@@ -32,13 +32,14 @@ namespace AMI.Business.Logic.OutcomeLogic
                 history.LastActiveDate = DateTime.UtcNow;
                 await this._createHistoryCommand(history).Execute(conn);
                 modelToUpdate.Text = this._model.Text;
-                conn.ABETContext.SaveChanges();
             }
             else
             {
                 conn.ABETContext.Outcomes.Add(this._model);
                 modelToUpdate = this._model;
             }
+
+            conn.ABETContext.SaveChanges();
 
             return modelToUpdate;
         }

@@ -11,7 +11,7 @@ using AMI.MVC.WebApp.Models.Classes;
 
 namespace AMI.MVC.WebApp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Faculty")]
     public partial class ClassController : AsyncController
     {
         private GetClassListCommand.Factory _getClassListCommand;

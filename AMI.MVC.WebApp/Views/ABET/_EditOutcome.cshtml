@@ -10,6 +10,7 @@
                 <div>@Html.TextAreaFor(m => m.Text, 3, 35, null)</div>
             </div>
             @Html.HiddenFor(m => m.IsActive)
+            @Html.Hidden("criteriaId", Model.Criteria.Id)
         }
     </div>
 </div>

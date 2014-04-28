@@ -33,13 +33,14 @@ namespace AMI.Business.Logic.StudentLearningObjectiveLogic
                 await this._createHistoryCommand(history).Execute(conn);
                 modelToUpdate.Text = this._model.Text;
                 modelToUpdate.Class = this._model.Class;
-                conn.ABETContext.SaveChanges();
             }
             else
             {
                 conn.ABETContext.StudentLearningObjectives.Add(this._model);
                 modelToUpdate = this._model;
             }
+
+            conn.ABETContext.SaveChanges();
 
             return modelToUpdate;
         }

@@ -49,20 +49,26 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [HttpGet]
-        public async virtual Task<ActionResult> EditOutcome(int? id)
+        public async virtual Task<ActionResult> EditOutcome(int criteriaId, int? id)
         {
             Outcome outcome = new Outcome();
             if (id.HasValue)
             {
                 outcome = await this._getOutcomeByIdCommand(id.Value).Execute();
             }
+            else
+            {
+                outcome.Criteria = await this._getCriteriaByIdCommand(criteriaId).Execute();
+            }
 
             return PartialView(MVC5.ABET.Views._EditOutcome, outcome);
         }
 
         [HttpPost]
-        public async virtual Task<ActionResult> EditOutcome(Outcome outcome)
+        public async virtual Task<ActionResult> EditOutcome(int criteriaId, Outcome outcome)
         {
+            outcome.IsActive = true;
+            outcome.CreatedOn = DateTime.UtcNow;
             return Json((await this._saveOutcomeCommand(outcome).Execute()).Id);
         }
 	}

@@ -34,7 +34,6 @@ namespace AMI.Business.Logic.CommitteeMemberLogic
                 modelToUpdate.CommitteeRank = this._model.CommitteeRank;
                 modelToUpdate.User = this._model.User;
                 modelToUpdate.Class = this._model.Class;
-                conn.ABETContext.SaveChanges();
             }
             else
             {
@@ -42,6 +41,7 @@ namespace AMI.Business.Logic.CommitteeMemberLogic
                 modelToUpdate = this._model;
             }
 
+            conn.ABETContext.SaveChanges();
             return modelToUpdate;
         }
     }

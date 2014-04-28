@@ -23,13 +23,14 @@ namespace AMI.Business.Logic.CriteriaLogic
             if (modelToUpdate != null)
             {
                 Mapper.Map(this._model, modelToUpdate);
-                conn.ABETContext.SaveChanges();
             }
             else
             {
                 conn.ABETContext.Criterias.Add(this._model);
                 modelToUpdate = this._model;
             }
+
+            conn.ABETContext.SaveChanges();
 
             return modelToUpdate;
         }

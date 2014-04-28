@@ -112,6 +112,7 @@ namespace AMI.MVC.WebApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_EditOutcome
         {
+            public readonly string criteriaId = "criteriaId";
             public readonly string id = "id";
             public readonly string outcome = "outcome";
         }
@@ -164,26 +165,28 @@ namespace AMI.MVC.WebApp.Controllers
         }
 
         [NonAction]
-        partial void EditOutcomeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int? id);
+        partial void EditOutcomeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int criteriaId, int? id);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> EditOutcome(int? id)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> EditOutcome(int criteriaId, int? id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditOutcome);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "criteriaId", criteriaId);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            EditOutcomeOverride(callInfo, id);
+            EditOutcomeOverride(callInfo, criteriaId, id);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 
         [NonAction]
-        partial void EditOutcomeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, AMI.Model.Outcome outcome);
+        partial void EditOutcomeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int criteriaId, AMI.Model.Outcome outcome);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> EditOutcome(AMI.Model.Outcome outcome)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> EditOutcome(int criteriaId, AMI.Model.Outcome outcome)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditOutcome);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "criteriaId", criteriaId);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "outcome", outcome);
-            EditOutcomeOverride(callInfo, outcome);
+            EditOutcomeOverride(callInfo, criteriaId, outcome);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
         }
 

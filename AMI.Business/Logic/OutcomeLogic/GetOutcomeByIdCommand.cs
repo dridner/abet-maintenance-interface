@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using AMI.Business.Logic;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 using AMI.Data.DataConnection;
 using AMI.Model;
-using AutoMapper;
 
 namespace AMI.Business.Logic.OutcomeLogic
 {
@@ -19,7 +19,7 @@ namespace AMI.Business.Logic.OutcomeLogic
 
         internal override async Task<Outcome> Execute(IDBConnection conn)
         {
-            return await conn.ABETContext.Outcomes.FindAsync(this._id);
+            return await conn.ABETContext.Outcomes.Include(o => o.Criteria).Where(o => o.Id == this._id).SingleAsync();
         }
     }
 }
