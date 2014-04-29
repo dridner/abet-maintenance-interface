@@ -105,6 +105,7 @@
     <Compile Include="Logic\CriteriaLogic\DeleteCriteriaCommand.cs" />
     <Compile Include="Logic\CriteriaLogic\GetCriteriaByIDCommand.cs" />
     <Compile Include="Logic\CriteriaLogic\SaveCriteriaCommand.cs" />
+    <Compile Include="Logic\UserLogic\GetUserListCommand.cs" />
     <Compile Include="Logic\UserLogic\IsUserAllowedToRegisterCommand.cs" />
     <Compile Include="Logic\UserLogic\SendEmailForRegisteringUserCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

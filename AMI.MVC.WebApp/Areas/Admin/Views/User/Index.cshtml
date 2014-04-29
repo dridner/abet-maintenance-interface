@@ -1,7 +1,52 @@
-﻿
+﻿@model IEnumerable<AMI.Model.ApplicationUser>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "User List";
 }
 
-<h2>Index</h2>
-
+<div style="text-align:right;float:right;">
+    @Html.ActionLink("Add new user", "Test", "Test")
+</div>
+<h2>User List</h2>
+<table style="width:100%;">
+    <thead>
+        <tr style="background-color:lightgray;">
+            <td>
+                User Name
+            </td>
+            <td>
+                First Name
+            </td>
+            <td>
+                Last Name
+            </td>
+            <td>
+                Email
+            </td>
+            <td>
+                Actions
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AMI.Model.ApplicationUser user in Model)
+        {
+        <tr>
+            <td>
+                @user.UserName
+            </td>
+            <td>
+                @user.FirstName
+            </td>
+            <td>
+                @user.LastName
+            </td>
+            <td>
+                @user.Email
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Test", "Test")
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
