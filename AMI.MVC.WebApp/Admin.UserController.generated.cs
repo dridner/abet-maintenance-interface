@@ -71,12 +71,14 @@ namespace AMI.MVC.WebApp.Areas.Admin.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string NewUser = "NewUser";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string NewUser = "NewUser";
         }
 
 
@@ -90,8 +92,10 @@ namespace AMI.MVC.WebApp.Areas.Admin.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _AddNewUser = "_AddNewUser";
                 public readonly string Index = "Index";
             }
+            public readonly string _AddNewUser = "~/Areas/Admin/Views/User/_AddNewUser.cshtml";
             public readonly string Index = "~/Areas/Admin/Views/User/Index.cshtml";
         }
     }
@@ -110,6 +114,17 @@ namespace AMI.MVC.WebApp.Areas.Admin.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
             return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+        }
+
+        [NonAction]
+        partial void NewUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult NewUser()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.NewUser);
+            NewUserOverride(callInfo);
+            return callInfo;
         }
 
     }

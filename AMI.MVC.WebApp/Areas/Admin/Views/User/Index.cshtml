@@ -4,7 +4,7 @@
 }
 
 <div style="text-align:right;float:right;">
-    @Html.ActionLink("Add new user", "Test", "Test")
+    @Html.ActionLink("Add new user", "Test", null, new { @class = "modal" })
 </div>
 <h2>User List</h2>
 <table style="width:100%;">
@@ -50,3 +50,31 @@
         }
     </tbody>
 </table>
+
+<div id="newUserDialog" style="display:none;">
+    @Html.Action(MVC5.Admin.User.NewUser())
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#newUserDialog').dialog({
+            autoOpen: false,
+            width: 400,
+            resizable: false,
+            modal: true,
+            title: "Create User",
+            buttons: {
+                "Save": function () {
+                    $("#outcomeForm").submit();
+                    $(this).dialog('close');
+                },
+                "Cancel": function () {
+                    $(this).dialog('close');
+                }
+            }
+        });
+        $('.modal').click(function() {
+            $('#newUserDialog').dialog('open');
+            return false;
+        });
+    });
+</script>

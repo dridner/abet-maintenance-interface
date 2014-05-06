@@ -15,7 +15,7 @@ namespace AMI.Data.SeedInformation
     {
         public static ApplicationUser Seed(UserManager<ApplicationUser> userManager, ABETContext context)
         {
-            CreateUserWithUserNameEmailAndRoleName(userManager, "SYSTEM","USER", "SYSTEM_USER", "SystemUser@systemUser.com");
+            CreateUserWithUserNameEmailAndRoleName(userManager, "SYSTEM","USER", "SYSTEM_USER", null);
             CreateUserWithUserNameEmailAndRoleName(userManager, "Richard", "Molyet", "richard.molyet", "richard.molyet@utoledo.edu", "Faculty");
             CreateUserWithUserNameEmailAndRoleName(userManager, "Weng", "Kang", "weng.kang", "weng.kang@utoledo.edu", "Faculty");
             CreateUserWithUserNameEmailAndRoleName(userManager, "Jackson", "Carvalho", "jackson.carvalho", "jackson.carvalho@utoledo.edu", "Faculty");

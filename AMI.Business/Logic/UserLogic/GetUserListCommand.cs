@@ -8,6 +8,7 @@ using AMI.Data.DataConnection;
 using AMI.Model;
 using AMI.Model.Filters;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AMI.Business.Logic.UserLogic
 {
@@ -25,7 +26,7 @@ namespace AMI.Business.Logic.UserLogic
         internal async override Task<List<ApplicationUser>> Execute(IDBConnection conn)
         {
             IQueryable<ApplicationUser> queryable = conn.UserManager.Users;
-            queryable = queryable.Where(m => m.FirstName != "SYSTEM");//Never send down the system user.
+            queryable = queryable.Where(m => m.Email != null);//only the system user doesn't have an email address.
 
             if (this._filter != null)
             {
